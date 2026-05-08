@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#003580">
+  <meta name="description" content="Budapest settembre 2026 — voli, alloggio e itinerario.">
+  <title>Budapest 2026</title>
+</head>
+<body>
+<h2 class="sr-only">Budapest settembre 2026 — prenotazioni voli, alloggio e itinerario</h2>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:14px;color:#1a1a1a;background:transparent}
+.wrap{padding:0 0 2.5rem}
+
+/* HEADER */
+.bk-header{background:#003580;border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1rem;color:#fff}
+.bk-header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem}
+.bk-trip-name{font-size:20px;font-weight:700;color:#fff}
+.bk-trip-dates{font-size:13px;color:#aac4e8;margin-top:2px}
+.confirmed-badge{background:#008234;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;white-space:nowrap}
+.family-chips{display:flex;gap:8px;flex-wrap:wrap;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.15)}
+.fchip{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;border:none;cursor:pointer;transition:opacity .15s}
+.fchip:hover{opacity:.85}
+
+/* TABS */
+.tab-bar{display:flex;border-bottom:2px solid #e7e7e7;margin-bottom:1.25rem}
+.tb{padding:10px 18px;font-size:14px;font-weight:600;border:none;background:transparent;cursor:pointer;color:#6b6b6b;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;gap:6px;transition:color .15s}
+.tb.act{color:#0071c2;border-bottom-color:#0071c2}
+.tb:hover:not(.act){color:#1a1a1a}
+
+/* CARDS */
+.bk-card{background:#fff;border:1px solid #e7e7e7;border-radius:8px;margin-bottom:1rem;overflow:hidden}
+.bk-card-head{padding:.875rem 1.25rem;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;justify-content:space-between}
+.bk-card-title{font-size:15px;font-weight:700;color:#1a1a1a}
+.bk-section-label{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#6b6b6b;margin-bottom:.5rem;margin-top:1.25rem}
+.bk-section-label:first-child{margin-top:0}
+
+/* FLIGHT */
+.flight-route{padding:1rem 1.25rem;display:flex;align-items:center;gap:8px;background:#f8f9fa;border-bottom:1px solid #f0f0f0}
+.airport{font-size:26px;font-weight:700;color:#1a1a1a;line-height:1}
+.airport-name{font-size:11px;color:#6b6b6b;margin-top:2px}
+.flight-time{font-size:16px;font-weight:700;margin-top:4px;color:#1a1a1a}
+.route-mid{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:0 8px}
+.route-line{width:100%;height:1px;background:#c8c8c8}
+.route-icon{font-size:16px;color:#0071c2}
+.route-info{font-size:11px;color:#6b6b6b;font-weight:600}
+.fam-row{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem;border-bottom:1px solid #f5f5f5}
+.fam-row:last-child{border-bottom:none}
+.fam-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.fam-name{font-size:13px;font-weight:700;color:#1a1a1a}
+.fam-mem{font-size:11px;color:#6b6b6b;margin-top:1px}
+.bk-code{font-family:monospace;font-size:12px;font-weight:700;padding:3px 8px;border-radius:4px;letter-spacing:.05em}
+.fam-actions{display:flex;gap:6px;align-items:center;flex-shrink:0}
+
+/* BUTTONS - using <a> tags for reliability */
+.btn-dl{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:6px 11px;border-radius:4px;text-decoration:none;cursor:pointer;transition:opacity .15s;white-space:nowrap;border:none;font-family:inherit}
+.btn-dl:hover{opacity:.82}
+.btn-dl-blue{background:#0071c2;color:#fff}
+.btn-dl-outline{background:#fff;color:#0071c2;border:1px solid #0071c2}
+.btn-big{display:flex;align-items:center;justify-content:center;gap:7px;width:100%;font-size:13px;font-weight:700;padding:9px 14px;border-radius:4px;text-decoration:none;cursor:pointer;transition:opacity .15s;border:none;font-family:inherit}
+.btn-big:hover{opacity:.82}
+
+/* HOTEL */
+.hotel-prop{padding:1rem 1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:#f8f9fa;border-bottom:1px solid #f0f0f0}
+.hotel-name{font-size:16px;font-weight:700;color:#1a1a1a}
+.hotel-detail{font-size:12px;color:#6b6b6b;margin-top:2px;display:flex;align-items:center;gap:4px}
+.ci-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#f0f0f0}
+.ci-cell{background:#fff;padding:.75rem 1.25rem}
+.ci-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#6b6b6b;margin-bottom:3px}
+.ci-val{font-size:13px;font-weight:700;color:#1a1a1a}
+.ci-sub{font-size:11px;color:#6b6b6b;margin-top:1px}
+.room-row{padding:.875rem 1.25rem;border-bottom:1px solid #f5f5f5;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.room-row:last-child{border-bottom:none}
+.room-type{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+.room-who{font-size:12px;color:#6b6b6b}
+.room-conf{text-align:right;flex-shrink:0}
+.room-conf-num{font-family:monospace;font-size:12px;font-weight:700}
+.room-pin{font-size:11px;color:#6b6b6b;margin-top:2px}
+.amenity-row{display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 1.25rem;border-top:1px solid #f0f0f0}
+.amenity{font-size:11px;font-weight:600;padding:3px 9px;background:#f0f6ff;color:#0071c2;border-radius:20px;display:flex;align-items:center;gap:3px}
+
+/* INFO BOX */
+.info-box{border-radius:6px;padding:.75rem 1rem;margin-top:.75rem;display:flex;gap:9px;align-items:flex-start;font-size:13px}
+.info-blue{background:#e8f4fd;border-left:3px solid #0071c2;color:#1a1a1a}
+.info-amber{background:#fff8e6;border-left:3px solid #febb02;color:#1a1a1a}
+.info-box i{flex-shrink:0;margin-top:1px}
+
+/* ITINERARY */
+.day-block{margin-bottom:1.5rem}
+.day-header-strip{background:#0071c2;border-radius:8px 8px 0 0;padding:.75rem 1.25rem;display:flex;align-items:center;gap:10px}
+.day-num{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.day-title-txt{font-size:14px;font-weight:700;color:#fff}
+.day-subtitle-txt{font-size:11px;color:rgba(255,255,255,.8);margin-top:1px}
+.day-body-strip{background:#fff;border:1px solid #e7e7e7;border-top:none;border-radius:0 0 8px 8px;padding:.875rem 1.25rem}
+.tl{position:relative;padding-left:22px}
+.tl-bar{position:absolute;left:6px;top:6px;bottom:0;width:1px;background:#e7e7e7}
+.tl-item{position:relative;margin-bottom:.9rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-19px;top:3px;width:10px;height:10px;border-radius:50%;border:2px solid #fff}
+.tl-time{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
+.tl-name{font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:2px}
+.tl-info{font-size:12px;color:#6b6b6b;line-height:1.5}
+.tag-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.tag{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;display:inline-flex;align-items:center;gap:3px}
+
+/* NOTICE */
+.notice{background:#fff8e6;border:1px solid #fedd7a;border-radius:6px;padding:.75rem 1rem;margin-top:.75rem;display:flex;gap:9px;align-items:flex-start;font-size:13px;color:#1a1a1a}
+.notice strong{font-weight:700}
+
+/* COLOR FAMILIES */
+.c-lenci{background:#dbeafe;color:#1e40af}
+.c-dapollon{background:#dcfce7;color:#166534}
+.c-rocco{background:#fef3c7;color:#92400e}
+.c-poli{background:#fee2e2;color:#991b1b}
+
+
+/* === OTTIMIZZAZIONE MOBILE / NETLIFY STATICO === */
+html{width:100%;min-height:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;background:#f4f7fb}
+body{width:100%;min-height:100%;background:#f4f7fb;padding:12px;overflow-x:hidden}
+a,button{-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+img,svg,video,canvas{max-width:100%;height:auto}
+.wrap{width:100%;max-width:980px;margin:0 auto;padding:0 0 calc(2.5rem + env(safe-area-inset-bottom))}
+.sec{animation:fadeIn .18s ease-in-out}
+@keyframes fadeIn{from{opacity:.65;transform:translateY(2px)}to{opacity:1;transform:none}}
+
+@media (max-width:768px){
+  body{font-size:16px;padding:10px;background:#f4f7fb;color:#111827}
+  .wrap{max-width:100%;padding-bottom:2rem}
+  .bk-header{border-radius:16px;padding:1rem;margin-bottom:.8rem;box-shadow:0 8px 24px rgba(0,53,128,.16)}
+  .bk-header-top{gap:.75rem;align-items:flex-start}
+  .bk-trip-name{font-size:22px;line-height:1.15}
+  .bk-trip-dates{font-size:13px;line-height:1.35;color:#d7e8ff}
+  .confirmed-badge{font-size:11px;padding:6px 9px;border-radius:999px}
+  .family-chips{gap:7px;padding-top:.85rem}
+  .fchip{font-size:12px;padding:7px 11px}
+
+  .tab-bar{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-bottom:none;background:rgba(244,247,251,.96);backdrop-filter:blur(10px);padding:8px 0;margin:0 0 .9rem;overflow:visible}
+  .tb{justify-content:center;min-height:44px;padding:9px 8px;border:1px solid #dbe4f0;border-radius:999px;background:#fff;font-size:13px;margin-bottom:0;box-shadow:0 2px 8px rgba(15,23,42,.05)}
+  .tb.act{background:#0071c2;color:#fff;border-color:#0071c2;box-shadow:0 6px 14px rgba(0,113,194,.2)}
+  .tb i{display:none}
+
+  .bk-section-label{font-size:12px;margin-top:1rem;margin-bottom:.45rem;padding-left:2px;color:#4b5563}
+  .bk-card{border-radius:14px;margin-bottom:.9rem;box-shadow:0 6px 18px rgba(15,23,42,.06);border-color:#e5e7eb}
+  .bk-card-head{padding:.9rem 1rem}
+  .bk-card-title{font-size:16px}
+
+  .flight-route{padding:1rem;gap:10px;align-items:stretch}
+  .airport{font-size:28px}
+  .airport-name{font-size:11px;max-width:92px;line-height:1.2}
+  .flight-time{font-size:18px}
+  .route-mid{min-width:0;justify-content:center;padding:0 4px}
+  .route-info{font-size:11px;line-height:1.25;text-align:center;max-width:150px}
+
+  .fam-row{display:block;padding:1rem;border-bottom:1px solid #eef2f7}
+  .fam-row>div:first-child{display:flex!important;align-items:center!important;gap:10px!important;margin-bottom:.75rem;min-width:0}
+  .fam-name{font-size:15px;line-height:1.25}
+  .fam-mem{font-size:13px;line-height:1.35;word-break:break-word}
+  .fam-actions{display:grid;grid-template-columns:1fr;gap:8px;width:100%}
+  .bk-code{display:block;width:100%;text-align:center;font-size:13px;padding:8px 10px;border-radius:8px}
+  .btn-dl,.btn-big{width:100%;min-height:44px;justify-content:center;font-size:14px;border-radius:10px;padding:11px 12px;white-space:normal;text-align:center;line-height:1.2}
+
+  .hotel-prop{display:block;padding:1rem}
+  .hotel-name{font-size:18px;line-height:1.25;margin-bottom:.3rem}
+  .hotel-detail{font-size:13px;line-height:1.35;align-items:flex-start}
+  .hotel-prop .confirmed-badge{display:inline-flex;margin-top:.75rem}
+  .ci-grid{grid-template-columns:1fr}
+  .ci-cell{padding:1rem}
+  .ci-val{font-size:15px}
+  .ci-sub{font-size:12px;line-height:1.35}
+  .amenity-row{padding:1rem;gap:7px}
+  .amenity{font-size:12px;padding:6px 10px}
+
+  .room-row{display:block;padding:1rem}
+  .room-type{font-size:15px;line-height:1.25}
+  .room-who{font-size:13px;line-height:1.4}
+  .room-conf{text-align:left;margin-top:.75rem;display:grid;grid-template-columns:1fr;gap:6px}
+  .room-conf-num{font-size:14px;padding:8px 10px;border-radius:8px;background:#f8fafc;text-align:center;word-break:break-all}
+  .room-pin{font-size:13px;text-align:center;margin:0;color:#4b5563}
+  .room-conf .btn-dl{margin-top:0!important}
+
+  .info-box,.notice{font-size:14px;line-height:1.45;border-radius:12px;padding:1rem;margin-top:.8rem}
+  .day-block{margin-bottom:1rem}
+  .day-header-strip{border-radius:14px 14px 0 0;padding:1rem;gap:11px}
+  .day-num{width:36px;height:36px;font-size:15px}
+  .day-title-txt{font-size:16px;line-height:1.2}
+  .day-subtitle-txt{font-size:12px;line-height:1.35}
+  .day-body-strip{padding:1rem;border-radius:0 0 14px 14px}
+  .tl{padding-left:24px}
+  .tl-item{margin-bottom:1.05rem}
+  .tl-time{font-size:11px;line-height:1.3}
+  .tl-name{font-size:15px;line-height:1.3}
+  .tl-info{font-size:14px;line-height:1.55;color:#4b5563}
+  .tag{font-size:12px;padding:5px 9px}
+}
+
+@media (max-width:390px){
+  body{padding:8px}
+  .bk-header{padding:.9rem}
+  .bk-trip-name{font-size:20px}
+  .tb{font-size:12px;padding:8px 5px}
+  .airport{font-size:24px}
+  .flight-time{font-size:16px}
+  .route-info{font-size:10px;max-width:120px}
+  .airport-name{max-width:78px}
+}
+
+</style>
+
+<div class="wrap">
+
+<!-- HEADER -->
+<div class="bk-header">
+  <div class="bk-header-top">
+    <div>
+      <div class="bk-trip-name">Budapest 2026</div>
+      <div class="bk-trip-dates">25 – 27 settembre · 4 famiglie · 14 persone</div>
+    </div>
+    <span class="confirmed-badge"><i class="ti ti-check" aria-hidden="true"></i> Confermata</span>
+  </div>
+  <div class="family-chips">
+    <span class="fchip c-lenci">FL · Lenci</span>
+    <span class="fchip c-dapollon">DA · D'Apollonio</span>
+    <span class="fchip c-rocco">FR · Rocco</span>
+    <span class="fchip c-poli">FP · Poli</span>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tb act" data-tab="voli"><i class="ti ti-plane" aria-hidden="true"></i> Voli</button>
+  <button class="tb" data-tab="alloggio"><i class="ti ti-building" aria-hidden="true"></i> Alloggio</button>
+  <button class="tb" data-tab="itinerario"><i class="ti ti-map" aria-hidden="true"></i> Itinerario</button>
+</div>
+
+<!-- ══ VOLI ══ -->
+<div id="voli" class="sec">
+
+  <div class="bk-section-label">Andata · Venerdì 25 settembre</div>
+  <div class="bk-card">
+    <div class="flight-route">
+      <div>
+        <div class="airport">CIA</div>
+        <div class="airport-name">Roma Ciampino</div>
+        <div class="flight-time">11:30</div>
+      </div>
+      <div class="route-mid">
+        <div class="route-line"></div>
+        <i class="ti ti-plane route-icon" aria-hidden="true"></i>
+        <div class="route-line"></div>
+        <div class="route-info">Ryanair FR6516 · 1h 40min · Diretto</div>
+      </div>
+      <div style="text-align:right">
+        <div class="airport">BUD</div>
+        <div class="airport-name">Budapest Liszt Ferenc</div>
+        <div class="flight-time">13:10</div>
+      </div>
+    </div>
+    <div class="fam-row">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="fam-av c-lenci">FL</div>
+        <div><div class="fam-name">Famiglia Lenci</div><div class="fam-mem">Federico · Manuela · Ginevra</div></div>
+      </div>
+      <div class="fam-actions">
+        <span class="bk-code c-lenci">O7TL7U</span>
+        <a class="btn-dl btn-dl-blue" href="https://drive.google.com/file/d/1WgWXsTB_IDIgOl-GNRCNMPtuIx_jNOEG/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-plane" aria-hidden="true"></i> Dettagli volo</a>
+      </div>
+    </div>
+    <div class="fam-row">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="fam-av c-dapollon">DA</div>
+        <div><div class="fam-name">Famiglia D'Apollonio</div><div class="fam-mem">Emiliano · Alessandra · Giorgia · Flavia</div></div>
+      </div>
+      <div class="fam-actions">
+        <span class="bk-code c-dapollon">I1FWYM</span>
+        <a class="btn-dl btn-dl-blue" href="https://drive.google.com/file/d/1S2jU4vXVF1FmGQ2gaEtlTeFe15xqpYcK/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-plane" aria-hidden="true"></i> Dettagli volo</a>
+      </div>
+    </div>
+    <div class="fam-row">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="fam-av c-rocco">FR</div>
+        <div><div class="fam-name">Famiglia Rocco</div><div class="fam-mem">Daniele · Paola · Lorenzo</div></div>
+      </div>
+      <div class="fam-actions">
+        <span class="bk-code c-rocco">E57U6K</span>
+        <a class="btn-dl btn-dl-blue" href="https://drive.google.com/file/d/1rXFBScoNc6uWNms6za4u_UgmgCl69t4v/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-plane" aria-hidden="true"></i> Dettagli volo</a>
+      </div>
+    </div>
+    <div class="fam-row">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="fam-av c-poli">FP</div>
+        <div><div class="fam-name">Famiglia Poli</div><div class="fam-mem">Daniele · Ilaria · Leonardo · Stefano</div></div>
+      </div>
+      <div class="fam-actions">
+        <span class="bk-code c-poli">BUWMNC</span>
+        <a class="btn-dl btn-dl-blue" href="https://drive.google.com/file/d/1CIi7sk8zu4_s0ri9YUvhXAf1NUE0BhBo/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-plane" aria-hidden="true"></i> Dettagli volo</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bk-section-label">Ritorno · Domenica 27 settembre</div>
+  <div class="bk-card">
+    <div class="flight-route">
+      <div>
+        <div class="airport">BUD</div>
+        <div class="airport-name">Budapest Liszt Ferenc</div>
+        <div class="flight-time">19:15</div>
+      </div>
+      <div class="route-mid">
+        <div class="route-line"></div>
+        <i class="ti ti-plane route-icon" aria-hidden="true"></i>
+        <div class="route-line"></div>
+        <div class="route-info">Ryanair FR8247 · 1h 40min · Diretto</div>
+      </div>
+      <div style="text-align:right">
+        <div class="airport">CIA</div>
+        <div class="airport-name">Roma Ciampino</div>
+        <div class="flight-time">20:55</div>
+      </div>
+    </div>
+    <div style="padding:.75rem 1.25rem;background:#f8f9fa;font-size:12px;color:#6b6b6b">
+      Stesso codice di prenotazione del volo di andata &nbsp;·&nbsp;
+      <span class="bk-code c-lenci">O7TL7U</span>&nbsp;
+      <span class="bk-code c-dapollon">I1FWYM</span>&nbsp;
+      <span class="bk-code c-rocco">E57U6K</span>&nbsp;
+      <span class="bk-code c-poli">BUWMNC</span>
+    </div>
+  </div>
+
+  <div class="info-box info-amber">
+    <i class="ti ti-alert-circle" style="font-size:16px;color:#f0a500" aria-hidden="true"></i>
+    <span>Il check-in online apre <strong>24 ore prima della partenza</strong> su ryanair.com. Nel biglietto è incluso solo l'oggetto personale (sotto al sedile) — il trolley in cabina è a pagamento.</span>
+  </div>
+</div>
+
+<!-- ══ ALLOGGIO ══ -->
+<div id="alloggio" class="sec">
+
+  <div class="bk-card">
+    <div class="hotel-prop">
+      <div>
+        <div class="hotel-name">Orbit Panzió</div>
+        <div class="hotel-detail"><i class="ti ti-map-pin" style="font-size:12px" aria-hidden="true"></i> Ferenciek tere 2 3/24 · 1053 Budapest</div>
+        <div class="hotel-detail" style="margin-top:2px"><i class="ti ti-phone" style="font-size:12px" aria-hidden="true"></i> +36 20 385 5186</div>
+      </div>
+      <span class="confirmed-badge" style="flex-shrink:0"><i class="ti ti-check" aria-hidden="true"></i> Confermata</span>
+    </div>
+    <div class="ci-grid">
+      <div class="ci-cell">
+        <div class="ci-lbl">Check-in</div>
+        <div class="ci-val">Ven 25 settembre</div>
+        <div class="ci-sub">dalle 15:00 · entro le 21:00</div>
+      </div>
+      <div class="ci-cell">
+        <div class="ci-lbl">Check-out</div>
+        <div class="ci-val">Dom 27 settembre</div>
+        <div class="ci-sub">dalle 08:00 · entro le 11:00</div>
+      </div>
+    </div>
+    <div class="amenity-row">
+      <span class="amenity"><i class="ti ti-wifi" aria-hidden="true"></i> WiFi gratis</span>
+      <span class="amenity"><i class="ti ti-wind" aria-hidden="true"></i> A/C</span>
+      <span class="amenity"><i class="ti ti-lock" aria-hidden="true"></i> Cassaforte</span>
+      <span class="amenity"><i class="ti ti-snowflake" aria-hidden="true"></i> Frigo</span>
+      <span class="amenity"><i class="ti ti-elevator" aria-hidden="true"></i> Ascensore</span>
+      <span class="amenity" style="background:#e8f4fd;color:#1e40af"><i class="ti ti-calendar-x" aria-hidden="true"></i> Cancellazione gratuita entro il 17 set</span>
+    </div>
+  </div>
+
+  <div class="bk-section-label">Camere prenotate</div>
+  <div class="bk-card">
+    <div class="room-row">
+      <div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><div class="fam-av c-lenci" style="width:26px;height:26px;font-size:10px">FL</div><div class="room-type">Suite · Famiglia Lenci</div></div>
+        <div class="room-who">Federico · Manuela · Ginevra &nbsp;·&nbsp; 2 adulti + 1 ospite · con cucina</div>
+      </div>
+      <div class="room-conf">
+        <div class="room-conf-num" style="color:#1e40af">5575.625.421</div>
+        <div class="room-pin">PIN 2181</div>
+        <a class="btn-dl btn-dl-blue" style="margin-top:6px" href="https://drive.google.com/file/d/1ByqUxuWpP_HA8U9J3Xk_jjc6MRH--Ogh/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-download" aria-hidden="true"></i> PDF</a>
+      </div>
+    </div>
+    <div class="room-row">
+      <div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><div class="fam-av c-dapollon" style="width:26px;height:26px;font-size:10px">DA</div><div class="room-type">Camera Deluxe · Famiglia D'Apollonio</div></div>
+        <div class="room-who">Emiliano · Alessandra · Giorgia · Flavia &nbsp;·&nbsp; 2 adulti + 2 ospiti</div>
+      </div>
+      <div class="room-conf">
+        <div class="room-conf-num" style="color:#166534">6244.017.974</div>
+        <div class="room-pin">PIN 9930</div>
+        <a class="btn-dl btn-dl-blue" style="margin-top:6px" href="https://drive.google.com/file/d/19xFR_7q4iraOqz50GlvbWiCbZAt5l181/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-download" aria-hidden="true"></i> PDF</a>
+      </div>
+    </div>
+    <div class="room-row">
+      <div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><div class="fam-av c-rocco" style="width:26px;height:26px;font-size:10px">FR</div><div class="room-type">Camera Standard · Famiglia Rocco</div></div>
+        <div class="room-who">Daniele · Paola · Lorenzo &nbsp;·&nbsp; 2 adulti + 1 ospite</div>
+      </div>
+      <div class="room-conf">
+        <div class="room-conf-num" style="color:#92400e">6592.848.160</div>
+        <div class="room-pin">PIN 4526</div>
+        <a class="btn-dl btn-dl-blue" style="margin-top:6px" href="https://drive.google.com/file/d/1cYaowz8lqag92cmNnn3-nDdhvLImnSKh/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-download" aria-hidden="true"></i> PDF</a>
+      </div>
+    </div>
+    <div class="room-row">
+      <div>
+        <div style="display:flex;align-items:center;gap:7px;margin-bottom:3px"><div class="fam-av c-poli" style="width:26px;height:26px;font-size:10px">FP</div><div class="room-type">Camera Superior · Famiglia Poli</div></div>
+        <div class="room-who">Daniele · Ilaria · Leonardo · Stefano &nbsp;·&nbsp; 4 ospiti</div>
+      </div>
+      <div class="room-conf">
+        <div class="room-conf-num" style="color:#991b1b">6708.996.857</div>
+        <div class="room-pin">PIN 0344</div>
+        <a class="btn-dl btn-dl-blue" style="margin-top:6px" href="https://drive.google.com/file/d/1qi7aaMHULGX4AJlj-0ZtYH6Vi2HPR7__/view?usp=share_link" target="_blank" rel="noopener"><i class="ti ti-download" aria-hidden="true"></i> PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box info-blue">
+    <i class="ti ti-clock" style="font-size:16px;color:#0071c2" aria-hidden="true"></i>
+    <span>Comunicare l'orario di arrivo in anticipo al <strong>+36 20 385 5186</strong>. Il check-in deve avvenire entro le 21:00. Check-out entro le 11:00.</span>
+  </div>
+</div>
+
+<!-- ══ ITINERARIO ══ -->
+<div id="itinerario" class="sec">
+
+  <div class="day-block">
+    <div class="day-header-strip">
+      <div class="day-num">1</div>
+      <div><div class="day-title-txt">Venerdì 25 settembre</div><div class="day-subtitle-txt">Il benvenuto sul Danubio</div></div>
+    </div>
+    <div class="day-body-strip"><div class="tl">
+      <div class="tl-bar"></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">13:10 · atterraggio BUD</div><div class="tl-name">Arrivo a Budapest</div><div class="tl-info">Transfer aeroporto → Orbit Panzió (35–40 min). Check-in dalle 15:00.</div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-car" aria-hidden="true"></i> transfer ~40 min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">15:30 – 18:00</div><div class="tl-name">Passeggiata lungo il Danubio</div><div class="tl-info">Dal Panzió al fiume in 5 minuti. Si cammina verso nord: il Vigadó, la statua della Piccola Principessa e le commoventi <strong>Scarpe sul Danubio</strong> — memoriale davanti al Parlamento.</div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-walk" aria-hidden="true"></i> a piedi · 45 min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">18:30</div><div class="tl-name">Ponte delle Catene (Széchenyi Lánchíd)</div><div class="tl-info">Attraversamento a piedi al tramonto mentre Budapest si illumina — vista mozzafiato su Buda e Pest.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Twentysix Budapest — Király u. 26</div><div class="tl-info">Ristorante "giungla urbana" al coperto, scenografico, perfetto per grandi gruppi. 15 min a piedi dall'alloggio.</div></div>
+    </div></div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-header-strip" style="background:#1d4ed8">
+      <div class="day-num">2</div>
+      <div><div class="day-title-txt">Sabato 26 settembre</div><div class="day-subtitle-txt">Buda, il bus anfibio e la storia di Pest</div></div>
+    </div>
+    <div class="day-body-strip"><div class="tl">
+      <div class="tl-bar"></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">09:30</div><div class="tl-name">Bus 16 verso il Quartiere del Castello</div><div class="tl-info">Da Deák Ferenc tér (2 min dall'alloggio) fino alla collina di Buda.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-bus" aria-hidden="true"></i> bus 16</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">10:00 – 11:15</div><div class="tl-name">Bastione dei Pescatori · Chiesa di Mattia · Palazzo Reale</div><div class="tl-info">La vista più bella di Budapest sul Parlamento. Tetti di ceramica colorata della Chiesa di Mattia. Cambio della guardia ogni ora al Palazzo Reale — gratuito, nessun tour necessario.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-walk" aria-hidden="true"></i> tutto a piedi</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.</div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i class="ti ti-wave-sine" aria-hidden="true"></i> terra + Danubio · 1h 35min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">13:30 · pranzo</div><div class="tl-name">Pest-Buda Bistro — Hess András tér 3</div><div class="tl-info">Locale storico, accogliente, gestisce bene gruppi numerosi. Cucina ungherese tradizionale.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">15:30 – 18:00</div><div class="tl-name">Metro M1 → Piazza degli Eroi → Castello di Vajdahunyad</div><div class="tl-info">La M1 è la metro più antica d'Europa — storica e affascinante. Fermata Hősök tere, poi il Castello di Vajdahunyad nel parco con cortili liberi e accesso gratuito.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-train" aria-hidden="true"></i> metro M1</span></div></div>
+    </div></div>
+  </div>
+
+  <div class="day-block">
+    <div class="day-header-strip" style="background:#0f766e">
+      <div class="day-num">3</div>
+      <div><div class="day-title-txt">Domenica 27 settembre</div><div class="day-subtitle-txt">Mercato, cupola e rientro a Roma</div></div>
+    </div>
+    <div class="day-body-strip"><div class="tl">
+      <div class="tl-bar"></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">08:00 · check-out</div><div class="tl-name">Check-out Orbit Panzió</div><div class="tl-info">Bagagli lasciati in struttura. Check-out entro le 11:00, si parte leggeri per l'ultima mattinata.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">10:00 – 12:00</div><div class="tl-name">Mercato Centrale (Nagyvásárcsarnok)</div><div class="tl-info">A 10 min a piedi dall'alloggio. Struttura storica in ferro e ceramica, banchi di paprika, foie gras e souvenir. Il piano superiore è da esplorare.</div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-walk" aria-hidden="true"></i> 10 min a piedi</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">12:30 · pranzo</div><div class="tl-name">Gettó Gulyás · zona Ferenciek tere</div><div class="tl-info">Gulasch autentico in ambiente moderno e informale — l'ultimo pasto ungherese.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">14:30 – 16:30</div><div class="tl-name">Basilica di Santo Stefano — cupola panoramica</div><div class="tl-info">Salita in cupola con ascensore. Vista a 360° su tutta Pest — il modo migliore per salutare la città.</div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-building-arch" aria-hidden="true"></i> cupola panoramica</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#dc2626"></div><div class="tl-time" style="color:#dc2626">16:30 · partenza</div><div class="tl-name">Ritiro bagagli e transfer verso l'aeroporto BUD</div><div class="tl-info">Taxi o minibus: 35–45 min. Volo FR8247 ore 19:15 — presentarsi in aeroporto entro le 17:45.</div><div class="tag-row"><span class="tag" style="background:#fef2f2;color:#dc2626"><i class="ti ti-plane-departure" aria-hidden="true"></i> FR8247 · 19:15</span></div></div>
+    </div></div>
+  </div>
+
+  <div class="info-box info-blue">
+    <i class="ti ti-map-pin" style="font-size:16px;color:#0071c2" aria-hidden="true"></i>
+    <span>Tutte le tappe sono raggiungibili a piedi o con i mezzi da Ferenciek tere. Mercato a 10 min · Ponte delle Catene a 15 min · Basilica a 20 min.</span>
+  </div>
+</div>
+
+</div>
+<script>
+const tabs=document.querySelectorAll('[data-tab]');
+const secs=document.querySelectorAll('.sec');
+function show(id){
+  tabs.forEach(b=>{const a=b.dataset.tab===id;b.classList.toggle('act',a);});
+  secs.forEach(s=>s.style.display=s.id===id?'block':'none');
+}
+tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
+show('voli');
+</script>
+
+</body>
+</html>
