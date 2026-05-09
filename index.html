@@ -603,6 +603,35 @@ img,svg,video,canvas{max-width:100%;height:auto}
 .upload-status.ok{background:#e8f8ee;color:#166534}
 .upload-status.err{background:#fff1f2;color:#991b1b}
 
+/* CLICKABLE DAILY MAP HEADERS */
+.day-map-link{
+  color:inherit;
+  text-decoration:none;
+  display:block;
+}
+
+.day-map-link:hover .day-title-txt,
+.day-map-link:hover .day-subtitle-txt{
+  text-decoration:underline;
+}
+
+.day-map-hint{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  margin-top:4px;
+  font-size:10px;
+  font-weight:800;
+  color:rgba(255,255,255,.9);
+}
+
+@media (max-width:768px){
+  .day-map-hint{
+    font-size:11px;
+    margin-top:5px;
+  }
+}
+
 </style>
 
 <div class="wrap">
@@ -835,7 +864,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <div class="day-block">
     <div class="day-header-strip">
       <div class="day-num">1</div>
-      <div><div class="day-title-txt">Venerdì 25 settembre</div><div class="day-subtitle-txt">Il benvenuto sul Danubio</div></div>
+      <div><a class="day-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Orbit+Panzi%C3%B3%2C+Ferenciek+tere+2%2C+Budapest&destination=Twentysix+Budapest%2C+Kir%C3%A1ly+u.+26%2C+Budapest&travelmode=walking&waypoints=Vigad%C3%B3+t%C3%A9r%2C+Budapest%7CLittle+Princess+Statue%2C+Budapest%7CShoes+on+the+Danube+Bank%2C+Budapest%7CSz%C3%A9chenyi+Chain+Bridge%2C+Budapest" target="_blank" rel="noopener"><div class="day-title-txt">Venerdì 25 settembre</div><div class="day-subtitle-txt">Il benvenuto sul Danubio</div><div class="day-map-hint">📍 Apri mappa giornata</div></a></div>
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
@@ -849,7 +878,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <div class="day-block">
     <div class="day-header-strip" style="background:#1d4ed8">
       <div class="day-num">2</div>
-      <div><div class="day-title-txt">Sabato 26 settembre</div><div class="day-subtitle-txt">Buda, il bus anfibio e la storia di Pest</div></div>
+      <div><a class="day-map-link" href="https://www.google.com/maps/dir/?api=1&origin=De%C3%A1k+Ferenc+t%C3%A9r%2C+Budapest&destination=Vajdahunyad+Castle%2C+Budapest&travelmode=transit&waypoints=Fisherman%27s+Bastion%2C+Budapest%7CMatthias+Church%2C+Budapest%7CBuda+Castle%2C+Budapest%7CRiverRide+Budapest%7CPest-Buda+Bistro%2C+Hess+Andr%C3%A1s+t%C3%A9r+3%2C+Budapest%7CHeroes%27+Square%2C+Budapest" target="_blank" rel="noopener"><div class="day-title-txt">Sabato 26 settembre</div><div class="day-subtitle-txt">Buda, il bus anfibio e la storia di Pest</div><div class="day-map-hint">📍 Apri mappa giornata</div></a></div>
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
@@ -864,7 +893,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <div class="day-block">
     <div class="day-header-strip" style="background:#0f766e">
       <div class="day-num">3</div>
-      <div><div class="day-title-txt">Domenica 27 settembre</div><div class="day-subtitle-txt">Mercato, cupola e rientro a Roma</div></div>
+      <div><a class="day-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Orbit+Panzi%C3%B3%2C+Ferenciek+tere+2%2C+Budapest&destination=Budapest+Ferenc+Liszt+International+Airport&travelmode=driving&waypoints=Central+Market+Hall%2C+Budapest%7CGett%C3%B3+Guly%C3%A1s%2C+Budapest%7CSt.+Stephen%27s+Basilica%2C+Budapest" target="_blank" rel="noopener"><div class="day-title-txt">Domenica 27 settembre</div><div class="day-subtitle-txt">Mercato, cupola e rientro a Roma</div><div class="day-map-hint">📍 Apri mappa giornata</div></a></div>
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
