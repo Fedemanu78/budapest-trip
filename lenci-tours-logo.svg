@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<defs>
+<linearGradient id="g3" x1="0" x2="1">
+<stop offset="0%" stop-color="#00a8ff"/>
+<stop offset="100%" stop-color="#0052d4"/>
+</linearGradient>
+</defs>
+<rect width="512" height="512" rx="120" fill="#101820"/>
+<text x="256" y="240" text-anchor="middle"
+font-family="Brush Script MT, cursive"
+font-size="115" fill="#ffffff">Lenci</text>
+<path d="M120 275c80 30 190 30 270 0" stroke="url(#g3)" stroke-width="10" fill="none" stroke-linecap="round"/>
+<text x="256" y="350" text-anchor="middle"
+font-family="Arial Black"
+font-size="58" fill="url(#g3)" letter-spacing="8">TOURS</text>
+</svg>
