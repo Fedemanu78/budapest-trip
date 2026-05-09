@@ -271,6 +271,93 @@ img,svg,video,canvas{max-width:100%;height:auto}
   .gallery-grid{grid-template-columns:1fr}
 }
 
+
+/* FINAL REFINEMENTS: family chips + section tabs */
+.family-chips{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.fchip{
+  text-align:center;
+  white-space:nowrap;
+  padding:7px 10px;
+  font-size:13px;
+  border-radius:999px;
+}
+
+.tab-bar{
+  background:#ffffff;
+  border:1px solid #dbe4f0;
+  border-radius:18px;
+  padding:8px;
+  gap:8px;
+  box-shadow:0 8px 22px rgba(15,23,42,.08);
+}
+
+.tb{
+  border-radius:14px;
+  justify-content:center;
+  min-height:46px;
+  background:#f8fafc;
+  border:1px solid transparent;
+  margin-bottom:0;
+}
+
+.tb.act{
+  background:#0071c2;
+  color:#ffffff;
+  border-color:#0071c2;
+  box-shadow:0 8px 16px rgba(0,113,194,.22);
+}
+
+@media (max-width:768px){
+  .family-chips{
+    grid-template-columns:repeat(4,1fr);
+    gap:5px;
+  }
+
+  .fchip{
+    font-size:11px;
+    padding:7px 4px;
+    min-width:0;
+  }
+
+  .tab-bar{
+    position:sticky;
+    top:8px;
+    z-index:50;
+    grid-template-columns:repeat(4,1fr);
+    padding:7px;
+    gap:6px;
+    margin:0 0 1rem;
+    border-radius:16px;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+  }
+
+  .tb{
+    min-height:44px;
+    font-size:12px;
+    font-weight:800;
+    padding:8px 4px;
+    border-radius:12px;
+  }
+}
+
+@media (max-width:390px){
+  .fchip{
+    font-size:10px;
+    padding:7px 3px;
+  }
+
+  .tb{
+    font-size:11px;
+    min-height:42px;
+  }
+}
+
 </style>
 
 <div class="wrap">
@@ -292,10 +379,10 @@ img,svg,video,canvas{max-width:100%;height:auto}
     <span class="confirmed-badge"><i class="ti ti-check" aria-hidden="true"></i> Confermata</span>
   </div>
   <div class="family-chips">
-    <span class="fchip c-lenci">FL · Lenci</span>
-    <span class="fchip c-dapollon">DA · D'Apollonio</span>
-    <span class="fchip c-rocco">FR · Rocco</span>
-    <span class="fchip c-poli">FP · Poli</span>
+    <span class="fchip c-lenci">Lenci</span>
+    <span class="fchip c-dapollon">D'Apollonio</span>
+    <span class="fchip c-rocco">Rocco</span>
+    <span class="fchip c-poli">Poli</span>
   </div>
 </div>
 
