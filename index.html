@@ -587,6 +587,22 @@ img,svg,video,canvas{max-width:100%;height:auto}
 .photo-slot{min-height:118px !important}
 }
 
+/* GOOGLE DRIVE AUTO UPLOAD STATUS */
+.upload-status{
+  margin:10px 12px 0;
+  padding:10px 12px;
+  border-radius:12px;
+  background:#eef6ff;
+  color:#003580;
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+  display:none;
+}
+.upload-status.show{display:block}
+.upload-status.ok{background:#e8f8ee;color:#166534}
+.upload-status.err{background:#fff1f2;color:#991b1b}
+
 </style>
 
 <div class="wrap">
@@ -895,6 +911,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
       <div class="gallery-local-title">Anteprima foto selezionate</div>
       <div id="galleryLocalGrid" class="gallery-local-grid"></div>
     </div>
+    <div id="uploadStatus" class="upload-status"></div>
   </div>
 
 </div>
@@ -939,20 +956,75 @@ function closePhotoMenu(){
 }
 function triggerCamera(){const input=document.getElementById('cameraInput'); if(input) input.click();}
 function triggerPicker(){const input=document.getElementById('pickerInput'); if(input) input.click();}
-function previewSelectedPhotos(files){
+
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxpiUICNbgSbOXHwCE7EZxUMDNK_YT3Nob-eAc4d0QBPWVxQJq6I0zT0-AmXipWpJzAg/exec";
+
+function setUploadStatus(message, type){
+  const status = document.getElementById('uploadStatus');
+  if(!status) return;
+  status.textContent = message;
+  status.className = 'upload-status show' + (type ? ' ' + type : '');
+}
+
+function fileToBase64(file){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = String(reader.result || '');
+      const base64 = result.includes(',') ? result.split(',')[1] : result;
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadPhotoToDrive(file){
+  const base64 = await fileToBase64(file);
+  const payload = {
+    category: currentPhotoCategory || 'Generale',
+    file: base64,
+    mimeType: file.type || 'image/jpeg',
+    fileName: file.name || 'foto-budapest.jpg'
+  };
+
+  await fetch(GOOGLE_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  });
+}
+
+async function previewSelectedPhotos(files){
   const preview=document.getElementById('galleryLocalPreview');
   const grid=document.getElementById('galleryLocalGrid');
   if(!preview || !grid || !files || !files.length) return;
+
   preview.classList.add('show');
-  Array.from(files).slice(0,6).forEach(file=>{
+  closePhotoMenu();
+
+  const selected = Array.from(files).slice(0,6);
+
+  selected.forEach(file=>{
     const img=document.createElement('img');
     img.alt='Foto selezionata - '+currentPhotoCategory;
     img.src=URL.createObjectURL(file);
     grid.prepend(img);
   });
-  closePhotoMenu();
-  alert('Foto aggiunta in anteprima. Per archiviarla nella cartella condivisa, apri “Galleria foto” e caricala su Google Drive.');
+
+  setUploadStatus('Caricamento foto in corso...', '');
+
+  try{
+    for(const file of selected){
+      await uploadPhotoToDrive(file);
+    }
+    setUploadStatus('Foto inviata alla cartella Google Drive “Foto Budapest”.', 'ok');
+  }catch(error){
+    setUploadStatus('Errore nel caricamento. Apri “Galleria foto” e carica manualmente la foto.', 'err');
+  }
 }
+
 const cameraInput=document.getElementById('cameraInput');
 if(cameraInput){cameraInput.addEventListener('change',e=>previewSelectedPhotos(e.target.files));}
 const pickerInput=document.getElementById('pickerInput');
