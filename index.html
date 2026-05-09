@@ -682,7 +682,6 @@ img,svg,video,canvas{max-width:100%;height:auto}
   gap:7px;
   margin-top:10px;
 }
-
 .currency-box{
   margin-top:12px;
   padding:1rem;
@@ -739,19 +738,10 @@ img,svg,video,canvas{max-width:100%;height:auto}
   text-align:center;
 }
 @media (max-width:768px){
-  .menza-menu-grid{
-    grid-template-columns:1fr;
-  }
-  .menza-menu-actions{
-    display:grid;
-    grid-template-columns:1fr;
-  }
-  .currency-row{
-    grid-template-columns:1fr;
-  }
-  .currency-btn{
-    width:100%;
-  }
+  .menza-menu-grid{grid-template-columns:1fr}
+  .menza-menu-actions{display:grid;grid-template-columns:1fr}
+  .currency-row{grid-template-columns:1fr}
+  .currency-btn{width:100%}
 }
 
 </style>
@@ -893,7 +883,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
 
   <div class="currency-box">
     <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
-    <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro con cambio aggiornato online.</div>
+    <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Prova rapida: 4.000 HUF.</div>
     <div class="currency-row">
       <input id="hufAmount" class="currency-input" type="number" inputmode="decimal" placeholder="Importo in HUF">
       <button class="currency-btn" type="button" onclick="convertHufToEur()">Converti</button>
@@ -997,14 +987,31 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <div class="day-block">
     <div class="day-header-strip">
       <div class="day-num">1</div>
-      <div><a class="day-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Orbit+Panzi%C3%B3%2C+Ferenciek+tere+2%2C+Budapest&destination=Twentysix+Budapest%2C+Kir%C3%A1ly+u.+26%2C+Budapest&travelmode=walking&waypoints=Vigad%C3%B3+t%C3%A9r%2C+Budapest%7CLittle+Princess+Statue%2C+Budapest%7CShoes+on+the+Danube+Bank%2C+Budapest%7CSz%C3%A9chenyi+Chain+Bridge%2C+Budapest" target="_blank" rel="noopener"><div class="day-title-txt">Venerdì 25 settembre</div><div class="day-subtitle-txt">Il benvenuto sul Danubio</div><div class="day-map-hint">📍 Apri mappa giornata</div></a></div>
+      <div><a class="day-map-link" href="https://www.google.com/maps/dir/?api=1&origin=Orbit+Panzi%C3%B3%2C+Ferenciek+tere+2%2C+Budapest&destination=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z%2C+Liszt+Ferenc+t%C3%A9r+2%2C+Budapest&travelmode=walking&waypoints=Vigad%C3%B3+t%C3%A9r%2C+Budapest%7CLittle+Princess+Statue%2C+Budapest%7CShoes+on+the+Danube+Bank%2C+Budapest%7CSz%C3%A9chenyi+Chain+Bridge%2C+Budapest" target="_blank" rel="noopener"><div class="day-title-txt">Venerdì 25 settembre</div><div class="day-subtitle-txt">Il benvenuto sul Danubio</div><div class="day-map-hint">📍 Apri mappa giornata</div></a></div>
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">13:10 · atterraggio BUD</div><div class="tl-name">Arrivo a Budapest</div><div class="tl-info">Transfer aeroporto → Orbit Panzió (35–40 min). Check-in dalle 15:00.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Budapest+Ferenc+Liszt+International+Airport" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri su Google Maps</a><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest+Ferenc+Liszt+International+Airport&amp;destination=Ferenciek+tere+2+3%2F24+1053+Budapest&amp;travelmode=driving" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Indicazioni per Orbit Panzió</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-car" aria-hidden="true"></i> transfer ~40 min</span></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">15:30 – 18:00</div><div class="tl-name">Passeggiata lungo il Danubio</div><div class="tl-info">Dal Panzió al fiume in 5 minuti. Si cammina verso nord: il Vigadó, la statua della Piccola Principessa e le commoventi <strong>Scarpe sul Danubio</strong> — memoriale davanti al Parlamento.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Shoes+on+the+Danube+Bank+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Scarpe sul Danubio</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-walk" aria-hidden="true"></i> a piedi · 45 min</span></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">18:30</div><div class="tl-name">Ponte delle Catene (Széchenyi Lánchíd)</div><div class="tl-info">Attraversamento a piedi al tramonto mentre Budapest si illumina — vista mozzafiato su Buda e Pest.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Szechenyi+Chain+Bridge+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Twentysix Budapest — Király u. 26</div><div class="tl-info">Ristorante "giungla urbana" al coperto, scenografico, perfetto per grandi gruppi. 15 min a piedi dall'alloggio.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Twentysix+Budapest+Kiraly+utca+26" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Menza Étterem és Kávéház — Liszt Ferenc tér 2</div><div class="tl-info">Ristorante centrale, semplice e molto apprezzato, con cucina ungherese e internazionale. Più adatto al gruppo: ambiente ampio, piatti accessibili e prezzi più equilibrati.</div><div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z+Liszt+Ferenc+t%C3%A9r+2+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div>
+        <div class="menza-menu-box">
+          <div class="menza-menu-title">🍽️ Menù Menza · prezzi indicativi in euro</div>
+          <div class="menza-menu-note">Conversione rapida indicativa: circa 400 HUF = 1 €. Per il cambio aggiornato usa il convertitore sotto.</div>
+          <div class="menza-menu-grid">
+            <div><strong>Zuppa tradizionale ungherese di gulasch</strong><span>3.490 HUF · ~8,70 €</span></div>
+            <div><strong>Burger di manzo Menza con patatine</strong><span>4.590 HUF · ~11,50 €</span></div>
+            <div><strong>Penne con crema di zucca</strong><span>4.190 HUF · ~10,50 €</span></div>
+            <div><strong>Risotto alla zucca con formaggio di capra</strong><span>4.390 HUF · ~11,00 €</span></div>
+            <div><strong>Zuppa cremosa all’aglio con lángos</strong><span>2.790 HUF · ~7,00 €</span></div>
+            <div><strong>Crêpe ungherese Hortobágyi</strong><span>3.790 HUF · ~9,50 €</span></div>
+          </div>
+          <div class="menza-menu-actions">
+            <a class="map-link" href="https://www.menzaetterem.hu/it/menu-3/" target="_blank" rel="noopener">📖 Menu completo</a>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z+Liszt+Ferenc+t%C3%A9r+2+Budapest" target="_blank" rel="noopener">📍 Menza su Maps</a>
+            <a class="map-link" href="https://www.menzaetterem.hu/" target="_blank" rel="noopener">📝 Sito / prenotazione</a>
+          </div>
+        </div></div>
     </div></div>
   </div>
 
