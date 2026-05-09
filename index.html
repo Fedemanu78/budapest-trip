@@ -6,6 +6,8 @@
   <meta name="theme-color" content="#003580">
   <meta name="description" content="Budapest settembre 2026 — voli, alloggio e itinerario.">
   <title>Budapest 2026</title>
+  <link rel="icon" type="image/svg+xml" href="lenci-tours-logo.svg">
+  <link rel="apple-touch-icon" href="lenci-tours-logo.svg">
 </head>
 <body>
 <h2 class="sr-only">Budapest settembre 2026 — prenotazioni voli, alloggio e itinerario</h2>
@@ -208,6 +210,64 @@ img,svg,video,canvas{max-width:100%;height:auto}
   .airport-name{max-width:78px}
 }
 
+
+/* BRAND / LENCI TOURS */
+.bk-brand-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lt-brand{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);color:#fff;font-size:13px;font-weight:800;letter-spacing:.03em;padding:5px 10px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.10)}
+.lt-brand-mark{width:20px;height:20px;border-radius:50%;background:#fff;color:#003580;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900}
+.lt-brand-text{font-family:Georgia,'Times New Roman',serif;font-style:italic;white-space:nowrap}
+
+/* ITINERARY ACTIONS */
+.tl-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.map-link,.ticket-link{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:11px;font-weight:800;padding:6px 10px;border-radius:999px;text-decoration:none;line-height:1.15}
+.map-link{background:#e8f4fd;color:#0071c2;border:1px solid #b9ddf6}
+.ticket-link{background:#fff8e6;color:#92400e;border:1px solid #fedd7a}
+.ticket-link.pending{opacity:.88}
+
+/* GALLERY PHOTO */
+.gallery-intro{padding:1rem 1.25rem;background:#f8f9fa;border-bottom:1px solid #f0f0f0}
+.gallery-title{font-size:17px;font-weight:800;color:#1a1a1a;margin-bottom:4px}
+.gallery-text{font-size:13px;color:#6b6b6b;line-height:1.45}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:1rem 1.25rem}
+.photo-slot{min-height:118px;border:1.5px dashed #c9d8ea;border-radius:12px;background:#f8fbff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;color:#5b6b7f}
+.photo-slot-icon{font-size:24px;line-height:1;margin-bottom:6px}
+.photo-slot-title{font-size:12px;font-weight:800;color:#344054}
+.photo-slot-sub{font-size:11px;line-height:1.35;margin-top:3px}
+.gallery-help{padding:0 1.25rem 1rem}
+.gallery-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 1.25rem 1.25rem}
+.gallery-actions .btn-big{background:#0071c2;color:#fff}
+.gallery-actions .btn-big.secondary{background:#fff;color:#0071c2;border:1px solid #0071c2}
+
+/* Gallery images added later:
+   Replace a .photo-slot with:
+   <a class="photo-card" href="LINK_FOTO_GRANDE" target="_blank" rel="noopener">
+     <img src="LINK_FOTO" alt="Descrizione foto">
+     <span>Descrizione</span>
+   </a>
+*/
+.photo-card{display:block;border-radius:12px;overflow:hidden;text-decoration:none;background:#fff;border:1px solid #e5e7eb;box-shadow:0 5px 14px rgba(15,23,42,.06)}
+.photo-card img{width:100%;height:140px;object-fit:cover;display:block}
+.photo-card span{display:block;padding:8px 10px;font-size:12px;font-weight:700;color:#1a1a1a}
+
+@media (max-width:768px){
+  .bk-brand-line{display:block}
+  .lt-brand{margin-top:7px;font-size:12px;padding:6px 10px}
+  .tab-bar{grid-template-columns:repeat(4,1fr)}
+  .tb{font-size:12px;min-height:42px;padding:8px 5px}
+  .tl-actions{display:grid;grid-template-columns:1fr;gap:7px}
+  .map-link,.ticket-link{min-height:40px;font-size:13px;border-radius:10px}
+  .gallery-grid{grid-template-columns:1fr 1fr;padding:1rem;gap:8px}
+  .photo-slot{min-height:112px}
+  .gallery-intro,.gallery-help{padding-left:1rem;padding-right:1rem}
+  .gallery-actions{grid-template-columns:1fr;padding:0 1rem 1rem}
+  .photo-card img{height:125px}
+}
+
+@media (max-width:390px){
+  .tb{font-size:11px}
+  .gallery-grid{grid-template-columns:1fr}
+}
+
 </style>
 
 <div class="wrap">
@@ -216,7 +276,10 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <div class="bk-header">
   <div class="bk-header-top">
     <div>
-      <div class="bk-trip-name">Budapest 2026</div>
+      <div class="bk-brand-line">
+        <div class="bk-trip-name">Budapest 2026</div>
+        <div class="lt-brand" aria-label="Lenci Tours"><span class="lt-brand-mark">LT</span><span class="lt-brand-text">Lenci Tours</span></div>
+      </div>
       <div class="bk-trip-dates">25 – 27 settembre · 4 famiglie · 14 persone</div>
     </div>
     <span class="confirmed-badge"><i class="ti ti-check" aria-hidden="true"></i> Confermata</span>
@@ -234,6 +297,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <button class="tb act" data-tab="voli"><i class="ti ti-plane" aria-hidden="true"></i> Voli</button>
   <button class="tb" data-tab="alloggio"><i class="ti ti-building" aria-hidden="true"></i> Alloggio</button>
   <button class="tb" data-tab="itinerario"><i class="ti ti-map" aria-hidden="true"></i> Itinerario</button>
+  <button class="tb" data-tab="gallery"><i class="ti ti-photo" aria-hidden="true"></i> Gallery</button>
 </div>
 
 <!-- ══ VOLI ══ -->
@@ -436,10 +500,10 @@ img,svg,video,canvas{max-width:100%;height:auto}
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">13:10 · atterraggio BUD</div><div class="tl-name">Arrivo a Budapest</div><div class="tl-info">Transfer aeroporto → Orbit Panzió (35–40 min). Check-in dalle 15:00.</div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-car" aria-hidden="true"></i> transfer ~40 min</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">15:30 – 18:00</div><div class="tl-name">Passeggiata lungo il Danubio</div><div class="tl-info">Dal Panzió al fiume in 5 minuti. Si cammina verso nord: il Vigadó, la statua della Piccola Principessa e le commoventi <strong>Scarpe sul Danubio</strong> — memoriale davanti al Parlamento.</div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-walk" aria-hidden="true"></i> a piedi · 45 min</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">18:30</div><div class="tl-name">Ponte delle Catene (Széchenyi Lánchíd)</div><div class="tl-info">Attraversamento a piedi al tramonto mentre Budapest si illumina — vista mozzafiato su Buda e Pest.</div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Twentysix Budapest — Király u. 26</div><div class="tl-info">Ristorante "giungla urbana" al coperto, scenografico, perfetto per grandi gruppi. 15 min a piedi dall'alloggio.</div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">13:10 · atterraggio BUD</div><div class="tl-name">Arrivo a Budapest</div><div class="tl-info">Transfer aeroporto → Orbit Panzió (35–40 min). Check-in dalle 15:00.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Budapest+Ferenc+Liszt+International+Airport" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri su Google Maps</a><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest+Ferenc+Liszt+International+Airport&amp;destination=Ferenciek+tere+2+3%2F24+1053+Budapest&amp;travelmode=driving" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Indicazioni per Orbit Panzió</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-car" aria-hidden="true"></i> transfer ~40 min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">15:30 – 18:00</div><div class="tl-name">Passeggiata lungo il Danubio</div><div class="tl-info">Dal Panzió al fiume in 5 minuti. Si cammina verso nord: il Vigadó, la statua della Piccola Principessa e le commoventi <strong>Scarpe sul Danubio</strong> — memoriale davanti al Parlamento.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Shoes+on+the+Danube+Bank+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Scarpe sul Danubio</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-walk" aria-hidden="true"></i> a piedi · 45 min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">18:30</div><div class="tl-name">Ponte delle Catene (Széchenyi Lánchíd)</div><div class="tl-info">Attraversamento a piedi al tramonto mentre Budapest si illumina — vista mozzafiato su Buda e Pest.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Szechenyi+Chain+Bridge+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Twentysix Budapest — Király u. 26</div><div class="tl-info">Ristorante "giungla urbana" al coperto, scenografico, perfetto per grandi gruppi. 15 min a piedi dall'alloggio.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Twentysix+Budapest+Kiraly+utca+26" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
     </div></div>
   </div>
 
@@ -450,11 +514,11 @@ img,svg,video,canvas{max-width:100%;height:auto}
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">09:30</div><div class="tl-name">Bus 16 verso il Quartiere del Castello</div><div class="tl-info">Da Deák Ferenc tér (2 min dall'alloggio) fino alla collina di Buda.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-bus" aria-hidden="true"></i> bus 16</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">10:00 – 11:15</div><div class="tl-name">Bastione dei Pescatori · Chiesa di Mattia · Palazzo Reale</div><div class="tl-info">La vista più bella di Budapest sul Parlamento. Tetti di ceramica colorata della Chiesa di Mattia. Cambio della guardia ogni ora al Palazzo Reale — gratuito, nessun tour necessario.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-walk" aria-hidden="true"></i> tutto a piedi</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.</div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i class="ti ti-wave-sine" aria-hidden="true"></i> terra + Danubio · 1h 35min</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">13:30 · pranzo</div><div class="tl-name">Pest-Buda Bistro — Hess András tér 3</div><div class="tl-info">Locale storico, accogliente, gestisce bene gruppi numerosi. Cucina ungherese tradizionale.</div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">15:30 – 18:00</div><div class="tl-name">Metro M1 → Piazza degli Eroi → Castello di Vajdahunyad</div><div class="tl-info">La M1 è la metro più antica d'Europa — storica e affascinante. Fermata Hősök tere, poi il Castello di Vajdahunyad nel parco con cortili liberi e accesso gratuito.</div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-train" aria-hidden="true"></i> metro M1</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">09:30</div><div class="tl-name">Bus 16 verso il Quartiere del Castello</div><div class="tl-info">Da Deák Ferenc tér (2 min dall'alloggio) fino alla collina di Buda.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Deak+Ferenc+ter+Budapest+bus+16" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Deák Ferenc tér</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Buda+Castle+District+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Quartiere del Castello</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-bus" aria-hidden="true"></i> bus 16</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">10:00 – 11:15</div><div class="tl-name">Bastione dei Pescatori · Chiesa di Mattia · Palazzo Reale</div><div class="tl-info">La vista più bella di Budapest sul Parlamento. Tetti di ceramica colorata della Chiesa di Mattia. Cambio della guardia ogni ora al Palazzo Reale — gratuito, nessun tour necessario.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Fisherman%27s+Bastion+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-walk" aria-hidden="true"></i> tutto a piedi</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=RiverRide+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Punto RiverRide</a><a id="biglietti-riverride" class="ticket-link pending" href="#biglietti-riverride" onclick="alert('Inserisci qui il link dei biglietti RiverRide quando saranno disponibili.'); return false;"><i class="ti ti-ticket" aria-hidden="true"></i> Biglietti RiverRide</a></div></div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i class="ti ti-wave-sine" aria-hidden="true"></i> terra + Danubio · 1h 35min</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">13:30 · pranzo</div><div class="tl-name">Pest-Buda Bistro — Hess András tér 3</div><div class="tl-info">Locale storico, accogliente, gestisce bene gruppi numerosi. Cucina ungherese tradizionale.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Pest-Buda+Bistro+Budapest+Hess+Andras+ter+3" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">15:30 – 18:00</div><div class="tl-name">Metro M1 → Piazza degli Eroi → Castello di Vajdahunyad</div><div class="tl-info">La M1 è la metro più antica d'Europa — storica e affascinante. Fermata Hősök tere, poi il Castello di Vajdahunyad nel parco con cortili liberi e accesso gratuito.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Heroes%27+Square+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Piazza degli Eroi</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Vajdahunyad+Castle+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Castello Vajdahunyad</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-train" aria-hidden="true"></i> metro M1</span></div></div>
     </div></div>
   </div>
 
@@ -465,11 +529,11 @@ img,svg,video,canvas{max-width:100%;height:auto}
     </div>
     <div class="day-body-strip"><div class="tl">
       <div class="tl-bar"></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">08:00 · check-out</div><div class="tl-name">Check-out Orbit Panzió</div><div class="tl-info">Bagagli lasciati in struttura. Check-out entro le 11:00, si parte leggeri per l'ultima mattinata.</div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">10:00 – 12:00</div><div class="tl-name">Mercato Centrale (Nagyvásárcsarnok)</div><div class="tl-info">A 10 min a piedi dall'alloggio. Struttura storica in ferro e ceramica, banchi di paprika, foie gras e souvenir. Il piano superiore è da esplorare.</div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-walk" aria-hidden="true"></i> 10 min a piedi</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">12:30 · pranzo</div><div class="tl-name">Gettó Gulyás · zona Ferenciek tere</div><div class="tl-info">Gulasch autentico in ambiente moderno e informale — l'ultimo pasto ungherese.</div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">14:30 – 16:30</div><div class="tl-name">Basilica di Santo Stefano — cupola panoramica</div><div class="tl-info">Salita in cupola con ascensore. Vista a 360° su tutta Pest — il modo migliore per salutare la città.</div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-building-arch" aria-hidden="true"></i> cupola panoramica</span></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#dc2626"></div><div class="tl-time" style="color:#dc2626">16:30 · partenza</div><div class="tl-name">Ritiro bagagli e transfer verso l'aeroporto BUD</div><div class="tl-info">Taxi o minibus: 35–45 min. Volo FR8247 ore 19:15 — presentarsi in aeroporto entro le 17:45.</div><div class="tag-row"><span class="tag" style="background:#fef2f2;color:#dc2626"><i class="ti ti-plane-departure" aria-hidden="true"></i> FR8247 · 19:15</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">08:00 · check-out</div><div class="tl-name">Check-out Orbit Panzió</div><div class="tl-info">Bagagli lasciati in struttura. Check-out entro le 11:00, si parte leggeri per l'ultima mattinata.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Ferenciek+tere+2+3%2F24+1053+Budapest+Orbit+Panzio" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Orbit Panzió</a></div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">10:00 – 12:00</div><div class="tl-name">Mercato Centrale (Nagyvásárcsarnok)</div><div class="tl-info">A 10 min a piedi dall'alloggio. Struttura storica in ferro e ceramica, banchi di paprika, foie gras e souvenir. Il piano superiore è da esplorare.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Central+Market+Hall+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-walk" aria-hidden="true"></i> 10 min a piedi</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">12:30 · pranzo</div><div class="tl-name">Gettó Gulyás · zona Ferenciek tere</div><div class="tl-info">Gulasch autentico in ambiente moderno e informale — l'ultimo pasto ungherese.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Getto+Gulyas+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#0f766e"></div><div class="tl-time" style="color:#0f766e">14:30 – 16:30</div><div class="tl-name">Basilica di Santo Stefano — cupola panoramica</div><div class="tl-info">Salita in cupola con ascensore. Vista a 360° su tutta Pest — il modo migliore per salutare la città.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=St.+Stephen%27s+Basilica+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div><div class="tag-row"><span class="tag" style="background:#f0fdfa;color:#0f766e"><i class="ti ti-building-arch" aria-hidden="true"></i> cupola panoramica</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#dc2626"></div><div class="tl-time" style="color:#dc2626">16:30 · partenza</div><div class="tl-name">Ritiro bagagli e transfer verso l'aeroporto BUD</div><div class="tl-info">Taxi o minibus: 35–45 min. Volo FR8247 ore 19:15 — presentarsi in aeroporto entro le 17:45.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Ferenciek+tere+2+3%2F24+1053+Budapest&amp;destination=Budapest+Ferenc+Liszt+International+Airport&amp;travelmode=driving" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Indicazioni aeroporto</a></div></div><div class="tag-row"><span class="tag" style="background:#fef2f2;color:#dc2626"><i class="ti ti-plane-departure" aria-hidden="true"></i> FR8247 · 19:15</span></div></div>
     </div></div>
   </div>
 
@@ -477,6 +541,66 @@ img,svg,video,canvas{max-width:100%;height:auto}
     <i class="ti ti-map-pin" style="font-size:16px;color:#0071c2" aria-hidden="true"></i>
     <span>Tutte le tappe sono raggiungibili a piedi o con i mezzi da Ferenciek tere. Mercato a 10 min · Ponte delle Catene a 15 min · Basilica a 20 min.</span>
   </div>
+</div>
+
+
+<!-- ══ GALLERY PHOTO ══ -->
+<div id="gallery" class="sec">
+
+  <div class="bk-card">
+    <div class="gallery-intro">
+      <div class="gallery-title">Gallery Photo · Budapest 2026</div>
+      <div class="gallery-text">
+        Spazio dedicato alle foto del viaggio condivise dai partecipanti. Al momento è predisposto per aggiungere immagini o link a una cartella condivisa.
+      </div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="photo-slot">
+        <div class="photo-slot-icon">📷</div>
+        <div class="photo-slot-title">Foto gruppo</div>
+        <div class="photo-slot-sub">Da aggiungere dopo il viaggio</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">🌉</div>
+        <div class="photo-slot-title">Danubio</div>
+        <div class="photo-slot-sub">Passeggiata e Ponte delle Catene</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">🏰</div>
+        <div class="photo-slot-title">Buda</div>
+        <div class="photo-slot-sub">Castello e Bastione dei Pescatori</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">🚌</div>
+        <div class="photo-slot-title">RiverRide</div>
+        <div class="photo-slot-sub">Bus anfibio sul Danubio</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">🍽️</div>
+        <div class="photo-slot-title">Cene e pranzi</div>
+        <div class="photo-slot-sub">Momenti insieme</div>
+      </div>
+      <div class="photo-slot">
+        <div class="photo-slot-icon">✨</div>
+        <div class="photo-slot-title">Ricordi speciali</div>
+        <div class="photo-slot-sub">Scatti migliori del viaggio</div>
+      </div>
+    </div>
+
+    <div class="gallery-actions">
+      <a class="btn-big" href="#" onclick="alert('Inserisci qui il link della cartella Google Drive condivisa con le foto.'); return false;"><i class="ti ti-folder" aria-hidden="true"></i> Cartella foto condivise</a>
+      <a class="btn-big secondary" href="#" onclick="alert('Quando avrai i link delle foto, potranno essere inseriti direttamente nella Gallery.'); return false;"><i class="ti ti-plus" aria-hidden="true"></i> Aggiungi foto</a>
+    </div>
+
+    <div class="gallery-help">
+      <div class="info-box info-blue" style="margin-top:0">
+        <i class="ti ti-info-circle" style="font-size:16px;color:#0071c2" aria-hidden="true"></i>
+        <span>Per usare davvero la gallery con tutti i partecipanti, crea una cartella Google Drive condivisa con permesso “Chiunque abbia il link può visualizzare” e collega qui il link della cartella.</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 </div>
