@@ -632,6 +632,128 @@ img,svg,video,canvas{max-width:100%;height:auto}
   }
 }
 
+/* MENZA MENU + CURRENCY CONVERTER */
+.menza-menu-box{
+  margin-top:10px;
+  padding:12px;
+  border-radius:14px;
+  background:#f8fbff;
+  border:1px solid #dbeafe;
+}
+.menza-menu-title{
+  font-size:14px;
+  font-weight:900;
+  color:#003580;
+  margin-bottom:4px;
+}
+.menza-menu-note{
+  font-size:11px;
+  color:#5b6b7f;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.menza-menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.menza-menu-grid div{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:8px;
+}
+.menza-menu-grid strong{
+  display:block;
+  font-size:12px;
+  line-height:1.3;
+  color:#1a1a1a;
+}
+.menza-menu-grid span{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  color:#0071c2;
+  margin-top:4px;
+}
+.menza-menu-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:10px;
+}
+
+.currency-box{
+  margin-top:12px;
+  padding:1rem;
+  border-radius:14px;
+  background:#ffffff;
+  border:1px solid #dbe4f0;
+  box-shadow:0 6px 18px rgba(15,23,42,.06);
+}
+.currency-title{
+  font-size:16px;
+  font-weight:900;
+  color:#003580;
+  margin-bottom:4px;
+}
+.currency-sub{
+  font-size:12px;
+  color:#5b6b7f;
+  line-height:1.4;
+  margin-bottom:10px;
+}
+.currency-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:8px;
+}
+.currency-input{
+  min-height:44px;
+  border:1px solid #cbd5e1;
+  border-radius:12px;
+  padding:0 12px;
+  font-size:15px;
+  font-family:inherit;
+}
+.currency-btn{
+  min-height:44px;
+  border:0;
+  border-radius:12px;
+  background:#0071c2;
+  color:#fff;
+  padding:0 14px;
+  font-size:14px;
+  font-weight:900;
+  font-family:inherit;
+  cursor:pointer;
+}
+.currency-result{
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  background:#eef6ff;
+  color:#003580;
+  font-size:13px;
+  font-weight:800;
+  text-align:center;
+}
+@media (max-width:768px){
+  .menza-menu-grid{
+    grid-template-columns:1fr;
+  }
+  .menza-menu-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .currency-row{
+    grid-template-columns:1fr;
+  }
+  .currency-btn{
+    width:100%;
+  }
+}
+
 </style>
 
 <div class="wrap">
@@ -768,6 +890,17 @@ img,svg,video,canvas{max-width:100%;height:auto}
     <i class="ti ti-alert-circle" style="font-size:16px;color:#f0a500" aria-hidden="true"></i>
     <span>Il check-in online apre <strong>24 ore prima della partenza</strong> su ryanair.com. Nel biglietto è incluso solo l'oggetto personale (sotto al sedile) — il trolley in cabina è a pagamento.</span>
   </div>
+
+  <div class="currency-box">
+    <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
+    <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro con cambio aggiornato online.</div>
+    <div class="currency-row">
+      <input id="hufAmount" class="currency-input" type="number" inputmode="decimal" placeholder="Importo in HUF">
+      <button class="currency-btn" type="button" onclick="convertHufToEur()">Converti</button>
+    </div>
+    <div id="currencyResult" class="currency-result">Esempio: 4.000 HUF ≈ circa 10 €</div>
+  </div>
+
 </div>
 
 <!-- ══ ALLOGGIO ══ -->
@@ -1058,6 +1191,33 @@ const cameraInput=document.getElementById('cameraInput');
 if(cameraInput){cameraInput.addEventListener('change',e=>previewSelectedPhotos(e.target.files));}
 const pickerInput=document.getElementById('pickerInput');
 if(pickerInput){pickerInput.addEventListener('change',e=>previewSelectedPhotos(e.target.files));}
+
+async function convertHufToEur(){
+  const input = document.getElementById('hufAmount');
+  const result = document.getElementById('currencyResult');
+  if(!input || !result) return;
+
+  const huf = Number(input.value);
+  if(!huf || huf <= 0){
+    result.textContent = 'Inserisci un importo valido in HUF.';
+    return;
+  }
+
+  result.textContent = 'Aggiornamento cambio in corso...';
+
+  try{
+    const response = await fetch('https://api.frankfurter.app/latest?from=HUF&to=EUR');
+    const data = await response.json();
+    const rate = data && data.rates ? Number(data.rates.EUR) : 0;
+    if(!rate) throw new Error('Cambio non disponibile');
+
+    const eur = huf * rate;
+    result.textContent = huf.toLocaleString('it-IT') + ' HUF ≈ ' + eur.toLocaleString('it-IT', {style:'currency', currency:'EUR'});
+  }catch(error){
+    const eur = huf / 400;
+    result.textContent = huf.toLocaleString('it-IT') + ' HUF ≈ ' + eur.toLocaleString('it-IT', {style:'currency', currency:'EUR'}) + ' circa';
+  }
+}
 
 </script>
 
