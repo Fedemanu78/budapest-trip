@@ -552,6 +552,41 @@ img,svg,video,canvas{max-width:100%;height:auto}
   }
 }
 
+/* GALLERY READABILITY + PHOTO MENU */
+#gallery{width:100%;overflow-x:hidden}
+#gallery .bk-card{overflow:visible}
+.gallery-grid{width:100%;box-sizing:border-box}
+.photo-slot{width:100%;max-width:100%;overflow:hidden;box-sizing:border-box;word-break:normal;overflow-wrap:anywhere}
+.photo-slot-title,.photo-slot-sub{display:block;width:100%;max-width:100%;text-align:center;padding-left:4px;padding-right:4px;box-sizing:border-box}
+.gallery-photo-menu{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;justify-content:center;background:rgba(15,23,42,.45);padding:16px}
+.gallery-photo-menu.open{display:flex}
+.gallery-menu-card{width:100%;max-width:430px;background:#fff;border-radius:22px;padding:18px;box-shadow:0 20px 50px rgba(15,23,42,.28)}
+.gallery-menu-title{font-family:"Comic Sans MS","Trebuchet MS",Arial,sans-serif;font-size:22px;font-weight:900;color:#003580;text-align:center;margin-bottom:6px}
+.gallery-menu-sub{font-size:13px;line-height:1.45;color:#5b6b7f;text-align:center;margin-bottom:14px}
+.gallery-menu-actions{display:grid;grid-template-columns:1fr;gap:9px}
+.gallery-menu-btn{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;border:0;text-decoration:none;font-family:"Comic Sans MS","Trebuchet MS",Arial,sans-serif;font-size:16px;font-weight:900;cursor:pointer}
+.gallery-menu-primary{background:#0071c2;color:#fff}
+.gallery-menu-secondary{background:#eef6ff;color:#0071c2;border:1px solid #b9ddf6}
+.gallery-menu-close{background:#f3f4f6;color:#374151}
+.gallery-local-preview{display:none;margin:0 1.25rem 1.25rem;padding:12px;border-radius:16px;background:#f8fbff;border:1px solid #dbeafe}
+.gallery-local-preview.show{display:block}
+.gallery-local-title{font-family:"Comic Sans MS","Trebuchet MS",Arial,sans-serif;font-weight:900;color:#003580;margin-bottom:8px}
+.gallery-local-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gallery-local-grid img{width:100%;height:90px;object-fit:cover;border-radius:10px;border:1px solid #e5e7eb}
+@media (max-width:768px){
+.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;padding-left:12px !important;padding-right:12px !important;gap:10px !important}
+.photo-slot{min-width:0;padding:14px 8px !important}
+.photo-slot-title{font-size:13px !important;line-height:1.2 !important}
+.photo-slot-sub{font-size:10.5px !important;line-height:1.35 !important}
+.gallery-actions{padding-left:12px !important;padding-right:12px !important}
+.gallery-local-preview{margin-left:12px;margin-right:12px}
+.gallery-local-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:360px){
+.gallery-grid{grid-template-columns:1fr !important}
+.photo-slot{min-height:118px !important}
+}
+
 </style>
 
 <div class="wrap">
@@ -833,6 +868,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
 
 
 
+
 <!-- ══ GALLERY PHOTO ══ -->
 <div id="gallery" class="sec">
 
@@ -842,45 +878,43 @@ img,svg,video,canvas{max-width:100%;height:auto}
     </div>
 
     <div class="gallery-grid">
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">📷</div>
-        <div class="photo-slot-title">Foto gruppo</div>
-        <div class="photo-slot-sub">I sorrisi più belli del viaggio</div>
-      </a>
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">🌉</div>
-        <div class="photo-slot-title">Danubio</div>
-        <div class="photo-slot-sub">Passeggiata e Ponte delle Catene</div>
-      </a>
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">🏰</div>
-        <div class="photo-slot-title">Buda</div>
-        <div class="photo-slot-sub">Castello e Bastione dei Pescatori</div>
-      </a>
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">🚌</div>
-        <div class="photo-slot-title">RiverRide</div>
-        <div class="photo-slot-sub">Il bus anfibio sul Danubio</div>
-      </a>
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">🍽️</div>
-        <div class="photo-slot-title">Cene e pranzi</div>
-        <div class="photo-slot-sub">I momenti più divertenti insieme</div>
-      </a>
-      <a class="photo-slot" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">
-        <div class="photo-slot-icon">✨</div>
-        <div class="photo-slot-title">Ricordi speciali</div>
-        <div class="photo-slot-sub">Gli scatti da riguardare sempre</div>
-      </a>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('Foto gruppo')"><div class="photo-slot-icon">📷</div><div class="photo-slot-title">Foto gruppo</div><div class="photo-slot-sub">I sorrisi più belli del viaggio</div></button>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('Danubio')"><div class="photo-slot-icon">🌉</div><div class="photo-slot-title">Danubio</div><div class="photo-slot-sub">Passeggiata e Ponte delle Catene</div></button>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('Buda')"><div class="photo-slot-icon">🏰</div><div class="photo-slot-title">Buda</div><div class="photo-slot-sub">Castello e Bastione dei Pescatori</div></button>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('RiverRide')"><div class="photo-slot-icon">🚌</div><div class="photo-slot-title">RiverRide</div><div class="photo-slot-sub">Il bus anfibio sul Danubio</div></button>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('Cene e pranzi')"><div class="photo-slot-icon">🍽️</div><div class="photo-slot-title">Cene e pranzi</div><div class="photo-slot-sub">I momenti più divertenti insieme</div></button>
+      <button type="button" class="photo-slot" onclick="openPhotoMenu('Ricordi speciali')"><div class="photo-slot-icon">✨</div><div class="photo-slot-title">Ricordi speciali</div><div class="photo-slot-sub">Gli scatti da riguardare sempre</div></button>
     </div>
 
     <div class="gallery-actions">
       <a class="btn-big" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener"><i class="ti ti-photo" aria-hidden="true"></i> Galleria foto</a>
-      <a class="btn-big secondary" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener"><i class="ti ti-plus" aria-hidden="true"></i> Aggiungi foto</a>
+      <button type="button" class="btn-big secondary" onclick="openPhotoMenu('Generale')"><i class="ti ti-plus" aria-hidden="true"></i> Aggiungi foto</button>
+    </div>
+
+    <div id="galleryLocalPreview" class="gallery-local-preview">
+      <div class="gallery-local-title">Anteprima foto selezionate</div>
+      <div id="galleryLocalGrid" class="gallery-local-grid"></div>
     </div>
   </div>
 
 </div>
+
+<div id="galleryPhotoMenu" class="gallery-photo-menu" aria-hidden="true">
+  <div class="gallery-menu-card">
+    <div id="galleryMenuTitle" class="gallery-menu-title">Aggiungi foto</div>
+    <div class="gallery-menu-sub">Puoi scattare una foto o scegliere immagini dal telefono. Per salvarle nella cartella condivisa, apri “Galleria foto” e caricale su Google Drive.</div>
+    <div class="gallery-menu-actions">
+      <button type="button" class="gallery-menu-btn gallery-menu-primary" onclick="triggerCamera()">📸 Scatta foto</button>
+      <button type="button" class="gallery-menu-btn gallery-menu-secondary" onclick="triggerPicker()">🖼️ Scegli dalla galleria</button>
+      <a class="gallery-menu-btn gallery-menu-secondary" href="https://drive.google.com/drive/folders/1m8rAbFZN0cIj1MjtjhuYHn8vvuvQwSIs?usp=sharing" target="_blank" rel="noopener">📁 Apri Galleria foto</a>
+      <button type="button" class="gallery-menu-btn gallery-menu-close" onclick="closePhotoMenu()">Chiudi</button>
+    </div>
+  </div>
+</div>
+
+<input id="cameraInput" type="file" accept="image/*" capture="environment" style="display:none">
+<input id="pickerInput" type="file" accept="image/*" multiple style="display:none">
+
 </div>
 <script>
 const tabs=document.querySelectorAll('[data-tab]');
@@ -891,6 +925,39 @@ function show(id){
 }
 tabs.forEach(b=>b.addEventListener('click',()=>show(b.dataset.tab)));
 show('voli');
+let currentPhotoCategory = 'Generale';
+function openPhotoMenu(category){
+  currentPhotoCategory = category || 'Generale';
+  const menu = document.getElementById('galleryPhotoMenu');
+  const title = document.getElementById('galleryMenuTitle');
+  if(title) title.textContent = 'Aggiungi foto · ' + currentPhotoCategory;
+  if(menu){menu.classList.add('open');menu.setAttribute('aria-hidden','false');}
+}
+function closePhotoMenu(){
+  const menu = document.getElementById('galleryPhotoMenu');
+  if(menu){menu.classList.remove('open');menu.setAttribute('aria-hidden','true');}
+}
+function triggerCamera(){const input=document.getElementById('cameraInput'); if(input) input.click();}
+function triggerPicker(){const input=document.getElementById('pickerInput'); if(input) input.click();}
+function previewSelectedPhotos(files){
+  const preview=document.getElementById('galleryLocalPreview');
+  const grid=document.getElementById('galleryLocalGrid');
+  if(!preview || !grid || !files || !files.length) return;
+  preview.classList.add('show');
+  Array.from(files).slice(0,6).forEach(file=>{
+    const img=document.createElement('img');
+    img.alt='Foto selezionata - '+currentPhotoCategory;
+    img.src=URL.createObjectURL(file);
+    grid.prepend(img);
+  });
+  closePhotoMenu();
+  alert('Foto aggiunta in anteprima. Per archiviarla nella cartella condivisa, apri “Galleria foto” e caricala su Google Drive.');
+}
+const cameraInput=document.getElementById('cameraInput');
+if(cameraInput){cameraInput.addEventListener('change',e=>previewSelectedPhotos(e.target.files));}
+const pickerInput=document.getElementById('pickerInput');
+if(pickerInput){pickerInput.addEventListener('change',e=>previewSelectedPhotos(e.target.files));}
+
 </script>
 
 </body>
