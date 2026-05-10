@@ -856,6 +856,72 @@ img,svg,video,canvas{max-width:100%;height:auto}
 #itinerario .lunch-details summary{
   background:#fff;
 }
+/* INFO UTILI */
+.useful-info-box{
+  margin:1rem;
+  margin-bottom:0;
+}
+
+.important-note-title{
+  background:#ffedd5;
+  color:#9a3412;
+  border:1px solid #fdba74;
+  padding:14px;
+  border-radius:14px 14px 0 0;
+  font-size:18px;
+  font-weight:900;
+  text-align:center;
+}
+
+.important-note-text{
+  background:#fff7ed;
+  border:1px solid #fdba74;
+  border-top:0;
+  padding:16px;
+  border-radius:0 0 14px 14px;
+  font-size:15px;
+  line-height:1.6;
+  color:#7c2d12;
+  margin-bottom:16px;
+}
+
+.important-note-text ul{
+  margin:10px 0 10px 18px;
+}
+
+.tips-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.tip-card{
+  background:#ffffff;
+  border:1px solid #dbe4f0;
+  border-radius:14px;
+  padding:14px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+
+.tip-title{
+  font-size:15px;
+  font-weight:900;
+  color:#003580;
+  margin-bottom:6px;
+}
+
+.tip-text{
+  font-size:13px;
+  line-height:1.5;
+  color:#334155;
+}
+
+@media (max-width:768px){
+  .tips-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 <div class="wrap">
 <!-- HEADER -->
@@ -1253,9 +1319,87 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <div class="sec" id="cambio">
 <div class="bk-card">
 <div class="gallery-intro">
-<div class="gallery-title">Cambio valuta · Fiorini ↔ Euro</div>
+<div class="gallery-title">Info utili · Budapest 2026</div>
 </div>
-<div class="currency-box currency-box-page">
+
+    <div class="useful-info-box">
+      <div class="important-note-title">⚠️ Nota importante sui pagamenti</div>
+      <div class="important-note-text">
+        A Budapest la moneta ufficiale è il <strong>Fiorino Ungherese (HUF)</strong>.
+        Pagare direttamente in euro spesso comporta un <strong>cambio sfavorevole</strong>.
+        <br><br>
+        ✅ Conviene quasi sempre:
+        <ul>
+          <li>pagare direttamente in <strong>Fiorini</strong>;</li>
+          <li>oppure usare la <strong>carta</strong> scegliendo sempre il pagamento in HUF e NON in euro.</li>
+        </ul>
+        Quando il POS chiede:
+        <br><strong>“Pagare in EUR o HUF?”</strong>
+        <br>➡️ scegliere sempre <strong>HUF</strong>.
+      </div>
+
+      <div class="tips-grid">
+
+        <div class="tip-card">
+          <div class="tip-title">🚰 Acqua</div>
+          <div class="tip-text">
+            L’acqua del rubinetto a Budapest è potabile e sicura.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🚕 Taxi</div>
+          <div class="tip-text">
+            Usare Bolt oppure taxi ufficiali con tariffa esposta.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🚇 Metro e tram</div>
+          <div class="tip-text">
+            Google Maps funziona perfettamente con metro, tram e autobus.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🏰 Quartiere del Castello</div>
+          <div class="tip-text">
+            Zona panoramica: scarpe comode consigliate.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🌉 Ponte delle Catene</div>
+          <div class="tip-text">
+            Uno dei punti migliori per le foto serali sul Danubio.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🛍️ Mercato Centrale</div>
+          <div class="tip-text">
+            Ideale per souvenir tipici e prodotti locali ungheresi.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">🛡️ Sicurezza</div>
+          <div class="tip-text">
+            Budapest è generalmente sicura. Attenzione solo alle zone molto turistiche.
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-title">📶 Internet</div>
+          <div class="tip-text">
+            Il roaming UE funziona normalmente. Non servono SIM locali.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="currency-box currency-box-page">
 <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
 <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Il convertitore prova ad aggiornare il cambio online; se non c’è rete usa una stima rapida di 400 HUF = 1 €.</div>
 <div class="currency-row">
