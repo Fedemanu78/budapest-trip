@@ -1146,6 +1146,91 @@ img,svg,video,canvas{max-width:100%;height:auto}
   }
 }
 
+
+
+/* FINAL CLEAN TABS + ROAMING COLLAPSE */
+@media (max-width:768px){
+  .tab-bar{
+    background:#ffffff !important;
+    border:0 !important;
+    border-bottom:1px solid #e5e7eb !important;
+    box-shadow:none !important;
+    gap:0 !important;
+    padding:4px 0 6px !important;
+  }
+
+  .tb{
+    background:#ffffff !important;
+    border:0 !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+    min-height:42px !important;
+    padding:8px 2px !important;
+    color:#111827 !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    line-height:1.15 !important;
+  }
+
+  .tb.act{
+    background:#ffffff !important;
+    color:#0071c2 !important;
+    border-bottom:3px solid #0071c2 !important;
+    box-shadow:none !important;
+  }
+
+  .tb i{
+    display:none !important;
+  }
+}
+
+.phone-roaming-details{
+  background:#ffffff;
+  border:1px solid #dbe4f0;
+  border-radius:14px;
+  padding:14px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+
+.phone-roaming-details summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+}
+
+.phone-roaming-details summary::-webkit-details-marker{
+  display:none;
+}
+
+.phone-roaming-details summary::after{
+  content:"Apri";
+  font-size:11px;
+  font-weight:900;
+  color:#0071c2;
+  background:#eef6ff;
+  padding:4px 8px;
+  border-radius:999px;
+}
+
+.phone-roaming-details[open] summary::after{
+  content:"Chiudi";
+}
+
+.phone-roaming-details .tip-text{
+  margin-top:8px;
+}
+
+.phone-roaming-details .roaming-operators-box{
+  margin-top:12px;
+  box-shadow:none;
+}
+
+.currency-result:empty{
+  display:none;
+}
 </style>
 <div class="wrap">
 <!-- HEADER -->
@@ -1428,7 +1513,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <div class="tl-bar"></div>
 <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">09:30</div><div class="tl-name">Bus 16 verso il Quartiere del Castello</div><div class="tl-info">Da Deák Ferenc tér (2 min dall'alloggio) fino alla collina di Buda.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Deak+Ferenc+ter+Budapest+bus+16" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Deák Ferenc tér</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Buda+Castle+District+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Quartiere del Castello</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i aria-hidden="true" class="ti ti-bus"></i> bus 16</span></div></div>
 <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">10:00 – 11:15</div><div class="tl-name">Bastione dei Pescatori · Chiesa di Mattia · Palazzo Reale</div><div class="tl-info">La vista più bella di Budapest sul Parlamento. Tetti di ceramica colorata della Chiesa di Mattia. Cambio della guardia ogni ora al Palazzo Reale — gratuito, nessun tour necessario.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Fisherman%27s+Bastion+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Apri posizione</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i aria-hidden="true" class="ti ti-walk"></i> tutto a piedi</span></div></div>
-<div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=RiverRide+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Punto di incontro RiverRide</a><a class="ticket-link pending" href="#biglietti-riverride" id="biglietti-riverride" onclick="alert('Inserisci qui il link dei biglietti RiverRide quando saranno disponibili.'); return false;" style="display:flex;width:100%;margin-top:8px"><i aria-hidden="true" class="ti ti-ticket"></i> Biglietti RiverRide</a></div></div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i aria-hidden="true" class="ti ti-wave-sine"></i> terra + Danubio · 1h 35min</span></div></div>
+<div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=RiverRide+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Punto di incontro RiverRide</a><a class="ticket-link" href="https://riverride.com/?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=BRAND-EN_IN_Riverride_Google_Search_Sales_HU_en_Ongoing_BR_NOCAT_SA&amp;utm_id=20734911490&amp;gad_source=1&amp;gad_campaignid=20734911490&amp;gbraid=0AAAAAD1XVzG570niknXGIQxlwQRKvbBFm&amp;gclid=Cj0KCQjw2YDQBhD_ARIsAE1qeSfT0AOtLykAsHsAoIdl4hm8mqQJLwdOuQ4vZVNuZDXW7QZTc6Qefo0aAjmiEALw_wcB" id="biglietti-riverride" rel="noopener" style="display:flex;width:100%;margin-top:8px" target="_blank"><i aria-hidden="true" class="ti ti-ticket"></i> Biglietti RiverRide</a></div></div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i aria-hidden="true" class="ti ti-wave-sine"></i> terra + Danubio · 1h 35min</span></div></div>
 <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">13:30 · pranzo</div><div class="tl-name">Pranzo nel Quartiere del Castello</div><div class="tl-info">Opzione comoda dopo la visita a Buda. Tocca il nome del ristorante per vedere piatti consigliati, prezzi indicativi e link utili.</div><div class="restaurant-options"><details class="restaurant-details lunch-details"><summary><span class="restaurant-name">Pest-Buda Bistro</span><span class="restaurant-address">Fortuna utca 3 / Hess András tér</span></summary><div class="restaurant-panel"><p>Cucina ungherese casalinga nel Quartiere del Castello, comodo per la pausa dopo Buda.</p><div class="menza-menu-grid restaurant-menu-grid"><div><strong>Zuppa di gulasch ungherese</strong><span>4.200 HUF · ~10,50 €</span></div><div><strong>Hortobágyi palacsinta</strong><span>4.900 HUF · ~12,25 €</span></div><div><strong>Pollo alla paprika con gnocchetti</strong><span>6.900 HUF · ~17,25 €</span></div><div><strong>Cotoletta / piatto semplice con contorno</strong><span>7.600 HUF · ~19,00 €</span></div><div><strong>Piatto vegetariano o stagionale</strong><span>5.900 HUF · ~14,75 €</span></div><div><strong>Dessert tradizionale ungherese</strong><span>3.200 HUF · ~8,00 €</span></div></div><div class="menza-menu-actions"><a class="map-link" href="https://zsidai.com/pest-buda/" rel="noopener" target="_blank">📖 Menu / pagina locale</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Pest-Buda+Bistro+Fortuna+utca+3+Budapest" rel="noopener" target="_blank">📍 Apri su Maps</a><a class="map-link" href="https://zsidai.com/pest-buda/" rel="noopener" target="_blank">📝 Info / prenotazione</a></div></div></details></div></div>
 <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">15:30 – 18:00</div><div class="tl-name">Metro M1 → Piazza degli Eroi → Castello di Vajdahunyad</div><div class="tl-info">La M1 è la metro più antica d'Europa — storica e affascinante. Fermata Hősök tere, poi il Castello di Vajdahunyad nel parco con cortili liberi e accesso gratuito.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Heroes%27+Square+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Piazza degli Eroi</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Vajdahunyad+Castle+Budapest" rel="noopener" target="_blank"><i aria-hidden="true" class="ti ti-map-pin"></i> Castello Vajdahunyad</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i aria-hidden="true" class="ti ti-train"></i> metro M1</span></div></div>
 <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena · 2 opzioni</div><div class="tl-info">Dopo la giornata intensa, due opzioni molto comode entro pochi minuti dall’alloggio. Tocca il nome del ristorante per visualizzare menu, prezzi indicativi e link.</div>
@@ -1566,7 +1651,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <input class="currency-input" id="hufAmount" inputmode="decimal" placeholder="Importo in HUF" type="number"/>
 <button class="currency-btn" onclick="convertHufToEur()" type="button">Converti</button>
 </div>
-<div class="currency-result" id="currencyResult">Esempio: 4.000 HUF ≈ circa 10 €</div>
+<div class="currency-result" id="currencyResult"></div>
 </div>
 <div class="tips-grid">
 <div class="tip-card">
@@ -1611,12 +1696,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
             Budapest è generalmente sicura. Attenzione solo alle zone molto turistiche.
           </div>
 </div>
-<div class="tip-card">
-<div class="tip-title">📱 Tariffe telefoniche</div>
-<div class="tip-text">In Ungheria vale il roaming UE: minuti e SMS seguono di norma la propria offerta nazionale, mentre i Giga disponibili possono avere un limite mensile. Verificare sempre nell’app del proprio operatore prima della partenza.</div>
-</div>
-</div>
-<div class="roaming-operators-box">
+<details class="tip-card phone-roaming-details"><summary class="tip-title">📱 Tariffe telefoniche</summary><div class="tip-text">In Ungheria vale il roaming UE: minuti e SMS seguono di norma la propria offerta nazionale, mentre i Giga disponibili possono avere un limite mensile. Verificare sempre nell’app del proprio operatore prima della partenza.</div><div class="roaming-operators-box">
 <div class="roaming-title">📶 Roaming UE: operatori italiani</div>
 <div class="roaming-text">
         L’Ungheria è inclusa nel roaming UE. In generale si possono usare minuti e SMS della propria offerta nazionale, mentre i Giga disponibili in Europa dipendono dal piano tariffario e dal costo mensile dell’offerta.
@@ -1632,10 +1712,10 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <div class="roaming-note">
         Consiglio pratico: prima di partire aprire l’app del proprio operatore e controllare “Roaming UE” o “Giga in Europa”. Usare il Wi‑Fi dell’alloggio per foto, video e backup.
       </div>
+</div></details>
 </div>
 
 </div>
-
 </div>
 </div>
 </div>
