@@ -1376,18 +1376,43 @@ async function convertHufToEur(){
 
   result.textContent = 'Aggiornamento cambio in corso...';
 
-  try{
-    const response = await fetch('https://api.frankfurter.app/latest?from=HUF&to=EUR');
-    const data = await response.json();
-    const rate = data && data.rates ? Number(data.rates.EUR) : 0;
-    if(!rate) throw new Error('Cambio non disponibile');
+  async function getRate(){
+    try{
+      const response = await fetch('https://api.frankfurter.app/latest?from=HUF&to=EUR', { cache: 'no-store' });
+      const data = await response.json();
+      if(data && data.rates && data.rates.EUR){
+        return {
+          rate: Number(data.rates.EUR),
+          source: 'cambio online aggiornato'
+        };
+      }
+    }catch(e){}
 
-    const eur = huf * rate;
-    result.textContent = huf.toLocaleString('it-IT') + ' HUF ≈ ' + eur.toLocaleString('it-IT', {style:'currency', currency:'EUR'});
-  }catch(error){
-    const eur = huf / 400;
-    result.textContent = huf.toLocaleString('it-IT') + ' HUF ≈ ' + eur.toLocaleString('it-IT', {style:'currency', currency:'EUR'}) + ' circa';
+    try{
+      const response = await fetch('https://open.er-api.com/v6/latest/HUF', { cache: 'no-store' });
+      const data = await response.json();
+      if(data && data.rates && data.rates.EUR){
+        return {
+          rate: Number(data.rates.EUR),
+          source: 'cambio online aggiornato'
+        };
+      }
+    }catch(e){}
+
+    return {
+      rate: 1 / 400,
+      source: 'stima offline'
+    };
   }
+
+  const fx = await getRate();
+  const eur = huf * fx.rate;
+
+  result.textContent =
+    huf.toLocaleString('it-IT') +
+    ' HUF ≈ ' +
+    eur.toLocaleString('it-IT', { style: 'currency', currency: 'EUR' }) +
+    ' (' + fx.source + ')';
 }
 
 </script>
