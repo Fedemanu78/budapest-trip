@@ -922,6 +922,65 @@ img,svg,video,canvas{max-width:100%;height:auto}
   }
 }
 
+
+
+/* ROAMING UE OPERATORI */
+.roaming-operators-box{
+  margin:16px 0 0;
+  background:#ffffff;
+  border:1px solid #dbe4f0;
+  border-radius:14px;
+  padding:14px;
+  box-shadow:0 6px 18px rgba(15,23,42,.05);
+}
+.roaming-title{
+  font-size:16px;
+  font-weight:900;
+  color:#003580;
+  margin-bottom:8px;
+}
+.roaming-text,.roaming-note{
+  font-size:13px;
+  line-height:1.5;
+  color:#334155;
+}
+.roaming-note{
+  margin-top:10px;
+  background:#eef6ff;
+  border-radius:10px;
+  padding:10px;
+  font-weight:700;
+}
+.roaming-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:10px;
+}
+.roaming-list div{
+  background:#f8fbff;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:10px;
+}
+.roaming-list strong{
+  display:block;
+  font-size:13px;
+  color:#003580;
+  margin-bottom:4px;
+}
+.roaming-list span{
+  display:block;
+  font-size:12px;
+  line-height:1.45;
+  color:#475569;
+}
+.useful-info-box .currency-box-page{
+  margin:16px 0;
+}
+@media (max-width:768px){
+  .roaming-list{grid-template-columns:1fr}
+}
 </style>
 <div class="wrap">
 <!-- HEADER -->
@@ -951,7 +1010,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <button class="tb" data-tab="alloggio"><i aria-hidden="true" class="ti ti-building"></i> Alloggio</button>
 <button class="tb" data-tab="itinerario"><i aria-hidden="true" class="ti ti-map"></i> Itinerario</button>
 <button class="tb" data-tab="gallery"><i aria-hidden="true" class="ti ti-photo"></i> Gallery</button>
-<button class="tb" data-tab="cambio"><i aria-hidden="true" class="ti ti-currency-euro"></i> Cambio</button>
+<button class="tb" data-tab="cambio"><i aria-hidden="true" class="ti ti-info-circle"></i> Info utili</button>
 </div>
 <!-- ══ VOLI ══ -->
 <div class="sec" id="voli">
@@ -1321,93 +1380,97 @@ img,svg,video,canvas{max-width:100%;height:auto}
 <div class="gallery-intro">
 <div class="gallery-title">Info utili · Budapest 2026</div>
 </div>
-
-    <div class="useful-info-box">
-      <div class="important-note-title">⚠️ Nota importante sui pagamenti</div>
-      <div class="important-note-text">
+<div class="useful-info-box">
+<div class="important-note-title">⚠️ Nota importante sui pagamenti</div>
+<div class="important-note-text">
         A Budapest la moneta ufficiale è il <strong>Fiorino Ungherese (HUF)</strong>.
         Pagare direttamente in euro spesso comporta un <strong>cambio sfavorevole</strong>.
-        <br><br>
+        <br/><br/>
         ✅ Conviene quasi sempre:
         <ul>
-          <li>pagare direttamente in <strong>Fiorini</strong>;</li>
-          <li>oppure usare la <strong>carta</strong> scegliendo sempre il pagamento in HUF e NON in euro.</li>
-        </ul>
+<li>pagare direttamente in <strong>Fiorini</strong>;</li>
+<li>oppure usare la <strong>carta</strong> scegliendo sempre il pagamento in HUF e NON in euro.</li>
+</ul>
         Quando il POS chiede:
-        <br><strong>“Pagare in EUR o HUF?”</strong>
-        <br>➡️ scegliere sempre <strong>HUF</strong>.
-      </div>
-
-      <div class="tips-grid">
-
-        <div class="tip-card">
-          <div class="tip-title">🚰 Acqua</div>
-          <div class="tip-text">
-            L’acqua del rubinetto a Budapest è potabile e sicura.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🚕 Taxi</div>
-          <div class="tip-text">
-            Usare Bolt oppure taxi ufficiali con tariffa esposta.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🚇 Metro e tram</div>
-          <div class="tip-text">
-            Google Maps funziona perfettamente con metro, tram e autobus.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🏰 Quartiere del Castello</div>
-          <div class="tip-text">
-            Zona panoramica: scarpe comode consigliate.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🌉 Ponte delle Catene</div>
-          <div class="tip-text">
-            Uno dei punti migliori per le foto serali sul Danubio.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🛍️ Mercato Centrale</div>
-          <div class="tip-text">
-            Ideale per souvenir tipici e prodotti locali ungheresi.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">🛡️ Sicurezza</div>
-          <div class="tip-text">
-            Budapest è generalmente sicura. Attenzione solo alle zone molto turistiche.
-          </div>
-        </div>
-
-        <div class="tip-card">
-          <div class="tip-title">📶 Internet</div>
-          <div class="tip-text">
-            Il roaming UE funziona normalmente. Non servono SIM locali.
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="currency-box currency-box-page">
+        <br/><strong>“Pagare in EUR o HUF?”</strong>
+<br/>➡️ scegliere sempre <strong>HUF</strong>.
+      </div><div class="currency-box currency-box-page">
 <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
-<div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Il convertitore prova ad aggiornare il cambio online; se non c’è rete usa una stima rapida di 400 HUF = 1 €.</div>
+<div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Il cambio viene aggiornato online quando disponibile; se manca la rete usa una stima rapida.</div>
 <div class="currency-row">
 <input class="currency-input" id="hufAmount" inputmode="decimal" placeholder="Importo in HUF" type="number"/>
 <button class="currency-btn" onclick="convertHufToEur()" type="button">Converti</button>
 </div>
 <div class="currency-result" id="currencyResult">Esempio: 4.000 HUF ≈ circa 10 €</div>
 </div>
+<div class="tips-grid">
+<div class="tip-card">
+<div class="tip-title">🚰 Acqua</div>
+<div class="tip-text">
+            L’acqua del rubinetto a Budapest è potabile e sicura.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🚕 Taxi</div>
+<div class="tip-text">
+            Usare Bolt oppure taxi ufficiali con tariffa esposta.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🚇 Metro e tram</div>
+<div class="tip-text">
+            Google Maps funziona perfettamente con metro, tram e autobus.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🏰 Quartiere del Castello</div>
+<div class="tip-text">
+            Zona panoramica: scarpe comode consigliate.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🌉 Ponte delle Catene</div>
+<div class="tip-text">
+            Uno dei punti migliori per le foto serali sul Danubio.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🛍️ Mercato Centrale</div>
+<div class="tip-text">
+            Ideale per souvenir tipici e prodotti locali ungheresi.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">🛡️ Sicurezza</div>
+<div class="tip-text">
+            Budapest è generalmente sicura. Attenzione solo alle zone molto turistiche.
+          </div>
+</div>
+<div class="tip-card">
+<div class="tip-title">📱 Tariffe telefoniche</div>
+<div class="tip-text">In Ungheria vale il roaming UE: minuti e SMS seguono di norma la propria offerta nazionale, mentre i Giga disponibili possono avere un limite mensile. Verificare sempre nell’app del proprio operatore prima della partenza.</div>
+</div>
+</div>
+<div class="roaming-operators-box">
+<div class="roaming-title">📶 Roaming UE: operatori italiani</div>
+<div class="roaming-text">
+        L’Ungheria è inclusa nel roaming UE. In generale si possono usare minuti e SMS della propria offerta nazionale, mentre i Giga disponibili in Europa dipendono dal piano tariffario e dal costo mensile dell’offerta.
+      </div>
+<div class="roaming-list">
+<div><strong>Iliad</strong><span>Molte offerte includono minuti/SMS illimitati in UE e una soglia dedicata di Giga Europa, variabile in base all’offerta.</span></div>
+<div><strong>TIM</strong><span>In UE permette di usare l’offerta nazionale senza costi aggiuntivi, nel rispetto dei limiti di uso corretto.</span></div>
+<div><strong>Vodafone</strong><span>Minuti e SMS sono utilizzabili in UE; per i dati è disponibile una parte dei Giga dell’offerta secondo fair use.</span></div>
+<div><strong>WINDTRE</strong><span>I Giga UE dipendono dal costo mensile dell’offerta; l’operatore mette a disposizione un calcolatore dedicato.</span></div>
+<div><strong>PosteMobile</strong><span>Roaming Like at Home in UE con minuti, SMS e dati alle condizioni nazionali entro i limiti di corretto utilizzo.</span></div>
+<div><strong>Very Mobile</strong><span>Minuti e SMS inclusi in UE; la soglia Giga UE è indicata nell’app e varia in base all’offerta attiva.</span></div>
+</div>
+<div class="roaming-note">
+        Consiglio pratico: prima di partire aprire l’app del proprio operatore e controllare “Roaming UE” o “Giga in Europa”. Usare il Wi‑Fi dell’alloggio per foto, video e backup.
+      </div>
+</div>
+
+</div>
+
 </div>
 </div>
 </div>
