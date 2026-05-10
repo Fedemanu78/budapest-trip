@@ -981,6 +981,155 @@ img,svg,video,canvas{max-width:100%;height:auto}
 @media (max-width:768px){
   .roaming-list{grid-template-columns:1fr}
 }
+/* MOBILE APP-LIKE REFINEMENT */
+@media (max-width:768px){
+  html{
+    background:#edf3fb;
+  }
+
+  body{
+    background:#edf3fb;
+    padding:0;
+  }
+
+  .wrap{
+    max-width:520px;
+    margin:0 auto;
+    padding:10px 10px calc(2.5rem + env(safe-area-inset-bottom));
+  }
+
+  .bk-header{
+    margin-top:4px;
+    border-radius:22px;
+    padding:1.1rem 1rem;
+    box-shadow:0 12px 30px rgba(0,53,128,.22);
+  }
+
+  .lt-brand-main{
+    font-size:34px !important;
+  }
+
+  .bk-trip-name{
+    font-size:25px !important;
+  }
+
+  .bk-trip-dates{
+    text-align:center;
+    font-size:14px;
+  }
+
+  .confirmed-badge{
+    display:none;
+  }
+
+  .tab-bar{
+    position:sticky !important;
+    top:0 !important;
+    z-index:80 !important;
+    display:grid !important;
+    grid-template-columns:repeat(5,1fr) !important;
+    gap:5px !important;
+    background:rgba(237,243,251,.96) !important;
+    backdrop-filter:blur(14px) !important;
+    border:0 !important;
+    padding:8px 2px 10px !important;
+    margin:0 0 12px !important;
+  }
+
+  .tb{
+    min-height:50px !important;
+    padding:7px 3px !important;
+    border-radius:15px !important;
+    background:#ffffff !important;
+    border:1px solid #dbe4f0 !important;
+    color:#334155 !important;
+    font-size:12px !important;
+    font-weight:900 !important;
+    line-height:1.15 !important;
+    box-shadow:0 4px 12px rgba(15,23,42,.07) !important;
+    white-space:normal !important;
+    text-align:center !important;
+  }
+
+  .tb.act{
+    background:#0071c2 !important;
+    color:#ffffff !important;
+    border-color:#0071c2 !important;
+    box-shadow:0 8px 18px rgba(0,113,194,.25) !important;
+  }
+
+  .tb i{
+    display:block !important;
+    font-size:17px !important;
+    margin-bottom:2px !important;
+  }
+
+  .bk-card,
+  .day-body-strip,
+  .day-header-strip,
+  .info-box,
+  .notice,
+  .currency-box,
+  .tip-card,
+  .restaurant-details,
+  .photo-slot{
+    border-radius:18px !important;
+  }
+
+  .bk-card{
+    box-shadow:0 8px 22px rgba(15,23,42,.08);
+  }
+
+  .day-header-strip{
+    border-radius:18px 18px 0 0 !important;
+  }
+
+  .day-body-strip{
+    border-radius:0 0 18px 18px !important;
+  }
+
+  .sec{
+    padding-bottom:8px;
+  }
+
+  .btn-dl,
+  .btn-big,
+  .map-link,
+  .ticket-link,
+  .currency-btn{
+    border-radius:14px !important;
+    min-height:46px;
+  }
+}
+
+@media (max-width:390px){
+  .wrap{
+    padding-left:8px;
+    padding-right:8px;
+  }
+
+  .tb{
+    font-size:11px !important;
+    min-height:48px !important;
+    padding-left:2px !important;
+    padding-right:2px !important;
+  }
+
+  .tb i{
+    font-size:16px !important;
+  }
+}
+
+@media (display-mode: standalone){
+  body{
+    background:#edf3fb;
+  }
+
+  .wrap{
+    padding-top:calc(10px + env(safe-area-inset-top));
+  }
+}
+
 </style>
 <div class="wrap">
 <!-- HEADER -->
