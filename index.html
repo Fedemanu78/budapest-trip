@@ -744,6 +744,89 @@ img,svg,video,canvas{max-width:100%;height:auto}
   .currency-btn{width:100%}
 }
 
+/* RESTAURANT COLLAPSIBLE OPTIONS + CAMBIO TAB */
+.restaurant-options{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:9px;
+  margin-top:10px;
+}
+.restaurant-details{
+  background:#f8fbff;
+  border:1px solid #dbeafe;
+  border-radius:14px;
+  overflow:hidden;
+}
+.restaurant-details summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.restaurant-details summary::-webkit-details-marker{display:none}
+.restaurant-name{
+  font-size:14px;
+  font-weight:900;
+  color:#003580;
+}
+.restaurant-address{
+  font-size:11px;
+  font-weight:800;
+  color:#0071c2;
+  white-space:nowrap;
+}
+.restaurant-panel{
+  padding:0 12px 12px;
+}
+.restaurant-panel p{
+  font-size:12px;
+  color:#5b6b7f;
+  line-height:1.45;
+  margin-bottom:10px;
+}
+.restaurant-menu-grid div{
+  min-width:0;
+}
+.restaurant-menu-grid strong{
+  overflow-wrap:anywhere;
+}
+.currency-box-page{
+  margin:1rem 1.25rem 1.25rem;
+}
+.tab-bar{
+  grid-template-columns:repeat(5,1fr) !important;
+}
+@media (max-width:768px){
+  .tab-bar{
+    grid-template-columns:repeat(5,1fr) !important;
+    gap:3px !important;
+  }
+  .tb{
+    font-size:10.5px !important;
+    padding-left:2px !important;
+    padding-right:2px !important;
+  }
+  .restaurant-details summary{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:3px;
+  }
+  .restaurant-address{
+    white-space:normal;
+  }
+  .currency-box-page{
+    margin:1rem;
+  }
+}
+@media (max-width:390px){
+  .tb{
+    font-size:9.5px !important;
+  }
+}
+
 </style>
 
 <div class="wrap">
@@ -778,6 +861,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
   <button class="tb" data-tab="alloggio"><i class="ti ti-building" aria-hidden="true"></i> Alloggio</button>
   <button class="tb" data-tab="itinerario"><i class="ti ti-map" aria-hidden="true"></i> Itinerario</button>
   <button class="tb" data-tab="gallery"><i class="ti ti-photo" aria-hidden="true"></i> Gallery</button>
+  <button class="tb" data-tab="cambio"><i class="ti ti-currency-euro" aria-hidden="true"></i> Cambio</button>
 </div>
 
 <!-- ══ VOLI ══ -->
@@ -881,15 +965,7 @@ img,svg,video,canvas{max-width:100%;height:auto}
     <span>Il check-in online apre <strong>24 ore prima della partenza</strong> su ryanair.com. Nel biglietto è incluso solo l'oggetto personale (sotto al sedile) — il trolley in cabina è a pagamento.</span>
   </div>
 
-  <div class="currency-box">
-    <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
-    <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Prova rapida: 4.000 HUF.</div>
-    <div class="currency-row">
-      <input id="hufAmount" class="currency-input" type="number" inputmode="decimal" placeholder="Importo in HUF">
-      <button class="currency-btn" type="button" onclick="convertHufToEur()">Converti</button>
-    </div>
-    <div id="currencyResult" class="currency-result">Esempio: 4.000 HUF ≈ circa 10 €</div>
-  </div>
+
 
 </div>
 
@@ -994,24 +1070,56 @@ img,svg,video,canvas{max-width:100%;height:auto}
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">13:10 · atterraggio BUD</div><div class="tl-name">Arrivo a Budapest</div><div class="tl-info">Transfer aeroporto → Orbit Panzió (35–40 min). Check-in dalle 15:00.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Budapest+Ferenc+Liszt+International+Airport" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri su Google Maps</a><a class="map-link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Budapest+Ferenc+Liszt+International+Airport&amp;destination=Ferenciek+tere+2+3%2F24+1053+Budapest&amp;travelmode=driving" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Indicazioni per Orbit Panzió</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-car" aria-hidden="true"></i> transfer ~40 min</span></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">15:30 – 18:00</div><div class="tl-name">Passeggiata lungo il Danubio</div><div class="tl-info">Dal Panzió al fiume in 5 minuti. Si cammina verso nord: il Vigadó, la statua della Piccola Principessa e le commoventi <strong>Scarpe sul Danubio</strong> — memoriale davanti al Parlamento.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Shoes+on+the+Danube+Bank+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Scarpe sul Danubio</a></div></div><div class="tag-row"><span class="tag" style="background:#f0f6ff;color:#0071c2"><i class="ti ti-walk" aria-hidden="true"></i> a piedi · 45 min</span></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#0071c2"></div><div class="tl-time" style="color:#0071c2">18:30</div><div class="tl-name">Ponte delle Catene (Széchenyi Lánchíd)</div><div class="tl-info">Attraversamento a piedi al tramonto mentre Budapest si illumina — vista mozzafiato su Buda e Pest.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Szechenyi+Chain+Bridge+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
-      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena</div><div class="tl-name">Menza Étterem és Kávéház — Liszt Ferenc tér 2</div><div class="tl-info">Ristorante centrale, semplice e molto apprezzato, con cucina ungherese e internazionale. Più adatto al gruppo: ambiente ampio, piatti accessibili e prezzi più equilibrati.</div><div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z+Liszt+Ferenc+t%C3%A9r+2+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div>
-        <div class="menza-menu-box">
-          <div class="menza-menu-title">🍽️ Menù Menza · prezzi indicativi in euro</div>
-          <div class="menza-menu-note">Conversione rapida indicativa: circa 400 HUF = 1 €. Per il cambio aggiornato usa il convertitore sotto.</div>
-          <div class="menza-menu-grid">
-            <div><strong>Zuppa tradizionale ungherese di gulasch</strong><span>3.490 HUF · ~8,70 €</span></div>
-            <div><strong>Burger di manzo Menza con patatine</strong><span>4.590 HUF · ~11,50 €</span></div>
-            <div><strong>Penne con crema di zucca</strong><span>4.190 HUF · ~10,50 €</span></div>
-            <div><strong>Risotto alla zucca con formaggio di capra</strong><span>4.390 HUF · ~11,00 €</span></div>
-            <div><strong>Zuppa cremosa all’aglio con lángos</strong><span>2.790 HUF · ~7,00 €</span></div>
-            <div><strong>Crêpe ungherese Hortobágyi</strong><span>3.790 HUF · ~9,50 €</span></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena · 2 opzioni</div><div class="tl-name">Cena vicino all’alloggio</div><div class="tl-info">Per la prima sera sono previste due alternative adatte al gruppo. Tocca il nome del ristorante per vedere piatti consigliati, prezzi indicativi e collegamenti utili.</div>
+        <div class="restaurant-options">
+          
+        <details class="restaurant-details">
+          <summary>
+            <span class="restaurant-name">Menza Étterem és Kávéház</span>
+            <span class="restaurant-address">Liszt Ferenc tér 2</span>
+          </summary>
+          <div class="restaurant-panel">
+            <p>Ampio, centrale, menu vario: buona scelta per gruppo e famiglie.</p>
+            <div class="menza-menu-grid restaurant-menu-grid">
+              <div><strong>Zuppa tradizionale ungherese di gulasch</strong><span>3.490 HUF · ~8.72 €</span></div>
+<div><strong>Burger di manzo Menza con patatine</strong><span>4.590 HUF · ~11.47 €</span></div>
+<div><strong>Cotoletta di maiale Menza con insalata di patate</strong><span>4.990 HUF · ~12.47 €</span></div>
+<div><strong>Risotto alla zucca con formaggio di capra</strong><span>4.390 HUF · ~10.97 €</span></div>
+<div><strong>Zuppa cremosa all’aglio con lángos</strong><span>2.790 HUF · ~6.97 €</span></div>
+<div><strong>Dolci Menza</strong><span>2.790 HUF · ~6.97 €</span></div>
+            </div>
+            <div class="menza-menu-actions">
+              <a class="map-link" href="https://www.menzaetterem.hu/it/menu-3/" target="_blank" rel="noopener">📖 Menu / pagina locale</a>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z+Liszt+Ferenc+t%C3%A9r+2+Budapest" target="_blank" rel="noopener">📍 Apri su Maps</a>
+              <a class="map-link" href="https://www.menzaetterem.hu/" target="_blank" rel="noopener">📝 Info / prenotazione</a>
+            </div>
           </div>
-          <div class="menza-menu-actions">
-            <a class="map-link" href="https://www.menzaetterem.hu/it/menu-3/" target="_blank" rel="noopener">📖 Menu completo</a>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Menza+%C3%89tterem+%C3%A9s+K%C3%A1v%C3%A9h%C3%A1z+Liszt+Ferenc+t%C3%A9r+2+Budapest" target="_blank" rel="noopener">📍 Menza su Maps</a>
-            <a class="map-link" href="https://www.menzaetterem.hu/" target="_blank" rel="noopener">📝 Sito / prenotazione</a>
+        </details>
+          
+        <details class="restaurant-details">
+          <summary>
+            <span class="restaurant-name">Parisi 6</span>
+            <span class="restaurant-address">Párizsi u. 6b</span>
+          </summary>
+          <div class="restaurant-panel">
+            <p>Molto vicino all’alloggio, cucina ungherese semplice, ambiente tranquillo.</p>
+            <div class="menza-menu-grid restaurant-menu-grid">
+              <div><strong>Gulasch / zuppa ungherese</strong><span>3.500 HUF · ~8.75 €</span></div>
+<div><strong>Salsiccia di manzo Angus con lecsó</strong><span>5.600 HUF · ~14.00 €</span></div>
+<div><strong>Paprikash di pollo con gnocchetti</strong><span>5.200 HUF · ~13.00 €</span></div>
+<div><strong>Anatra / piatto della casa</strong><span>6.500 HUF · ~16.25 €</span></div>
+<div><strong>Piatto vegetariano / pasta semplice</strong><span>4.500 HUF · ~11.25 €</span></div>
+<div><strong>Dessert tradizionale</strong><span>2.500 HUF · ~6.25 €</span></div>
+            </div>
+            <div class="menza-menu-actions">
+              <a class="map-link" href="https://www.facebook.com/parisi6/" target="_blank" rel="noopener">📖 Menu / pagina locale</a>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Parisi+6+Budapest+P%C3%A1rizsi+u.+6b" target="_blank" rel="noopener">📍 Apri su Maps</a>
+              <a class="map-link" href="https://www.facebook.com/parisi6/" target="_blank" rel="noopener">📝 Info / prenotazione</a>
+            </div>
           </div>
-        </div></div>
+        </details>
+        </div>
+      </div>
     </div></div>
   </div>
 
@@ -1027,6 +1135,56 @@ img,svg,video,canvas{max-width:100%;height:auto}
       <div class="tl-item"><div class="tl-dot" style="background:#d97706"></div><div class="tl-time" style="color:#d97706">11:30 – 13:05 · tour prenotato</div><div class="tl-name">RiverRide — bus anfibio di Budapest</div><div class="tl-info">Un bus che percorre i viali storici e si tuffa nel Danubio diventando barca. Tour guidato di 1 ora e 35 minuti tra strade e fiume — l'attrazione più spettacolare della città.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=RiverRide+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Punto di incontro RiverRide</a><a id="biglietti-riverride" class="ticket-link pending" style="display:flex;width:100%;margin-top:8px" href="#biglietti-riverride" onclick="alert('Inserisci qui il link dei biglietti RiverRide quando saranno disponibili.'); return false;"><i class="ti ti-ticket" aria-hidden="true"></i> Biglietti RiverRide</a></div></div><div class="tag-row"><span class="tag" style="background:#fef3c7;color:#92400e"><i class="ti ti-wave-sine" aria-hidden="true"></i> terra + Danubio · 1h 35min</span></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">13:30 · pranzo</div><div class="tl-name">Pest-Buda Bistro — Hess András tér 3</div><div class="tl-info">Locale storico, accogliente, gestisce bene gruppi numerosi. Cucina ungherese tradizionale.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Pest-Buda+Bistro+Budapest+Hess+Andras+ter+3" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Apri posizione</a></div></div></div>
       <div class="tl-item"><div class="tl-dot" style="background:#1d4ed8"></div><div class="tl-time" style="color:#1d4ed8">15:30 – 18:00</div><div class="tl-name">Metro M1 → Piazza degli Eroi → Castello di Vajdahunyad</div><div class="tl-info">La M1 è la metro più antica d'Europa — storica e affascinante. Fermata Hősök tere, poi il Castello di Vajdahunyad nel parco con cortili liberi e accesso gratuito.<div class="tl-actions"><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Heroes%27+Square+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Piazza degli Eroi</a><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Vajdahunyad+Castle+Budapest" target="_blank" rel="noopener"><i class="ti ti-map-pin" aria-hidden="true"></i> Castello Vajdahunyad</a></div></div><div class="tag-row"><span class="tag" style="background:#eff6ff;color:#1d4ed8"><i class="ti ti-train" aria-hidden="true"></i> metro M1</span></div></div>
+      <div class="tl-item"><div class="tl-dot" style="background:#008234"></div><div class="tl-time" style="color:#008234">20:00 · cena · 2 opzioni</div><div class="tl-name">Cena semplice vicino a Orbit Panzió</div><div class="tl-info">Dopo la giornata intensa, due opzioni molto comode entro pochi minuti dall’alloggio. Tocca il nome del ristorante per visualizzare menu, prezzi indicativi e link.</div>
+        <div class="restaurant-options">
+          
+        <details class="restaurant-details">
+          <summary>
+            <span class="restaurant-name">Bonnie - Goulash & Langosh Bar</span>
+            <span class="restaurant-address">Ferenciek tere 5</span>
+          </summary>
+          <div class="restaurant-panel">
+            <p>A due passi dall’alloggio: gulasch, lángos e piatti ungheresi molto semplici.</p>
+            <div class="menza-menu-grid restaurant-menu-grid">
+              <div><strong>Chicken Briboka® Paprikash con galuska</strong><span>9.490 HUF · ~23.73 €</span></div>
+<div><strong>Beef Briboka® Paprikash con galuska</strong><span>10.990 HUF · ~27.48 €</span></div>
+<div><strong>Gulasch tradizionale</strong><span>4.500 HUF · ~11.25 €</span></div>
+<div><strong>Lángos classico</strong><span>3.900 HUF · ~9.75 €</span></div>
+<div><strong>Burger / piatto semplice</strong><span>5.000 HUF · ~12.50 €</span></div>
+<div><strong>Dessert o dolce locale</strong><span>2.500 HUF · ~6.25 €</span></div>
+            </div>
+            <div class="menza-menu-actions">
+              <a class="map-link" href="https://www.bonnie-goulashandlangoshbar.hu/menu/" target="_blank" rel="noopener">📖 Menu / pagina locale</a>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Bonnie+Goulash+and+Langosh+Bar+Ferenciek+tere+5+Budapest" target="_blank" rel="noopener">📍 Apri su Maps</a>
+              <a class="map-link" href="https://www.bonnie-goulashandlangoshbar.hu/en/" target="_blank" rel="noopener">📝 Info / prenotazione</a>
+            </div>
+          </div>
+        </details>
+          
+        <details class="restaurant-details">
+          <summary>
+            <span class="restaurant-name">Piazza Italia Restaurant & Bar</span>
+            <span class="restaurant-address">Ferenciek tere 7-8</span>
+          </summary>
+          <div class="restaurant-panel">
+            <p>Opzione più semplice per chi preferisce cucina italiana: pizza, pasta e piatti familiari.</p>
+            <div class="menza-menu-grid restaurant-menu-grid">
+              <div><strong>Pizza margherita / semplice</strong><span>3.500 HUF · ~8.75 €</span></div>
+<div><strong>Pizza farcita</strong><span>4.500 HUF · ~11.25 €</span></div>
+<div><strong>Pasta al pomodoro o arrabbiata</strong><span>3.900 HUF · ~9.75 €</span></div>
+<div><strong>Carbonara / pasta più ricca</strong><span>4.900 HUF · ~12.25 €</span></div>
+<div><strong>Cotoletta o secondo semplice</strong><span>5.500 HUF · ~13.75 €</span></div>
+<div><strong>Dolce italiano</strong><span>2.500 HUF · ~6.25 €</span></div>
+            </div>
+            <div class="menza-menu-actions">
+              <a class="map-link" href="https://www.facebook.com/piazza.italia.restaurantbar/" target="_blank" rel="noopener">📖 Menu / pagina locale</a>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Piazza+Italia+Restaurant+Bar+Ferenciek+tere+7-8+Budapest" target="_blank" rel="noopener">📍 Apri su Maps</a>
+              <a class="map-link" href="https://www.facebook.com/piazza.italia.restaurantbar/" target="_blank" rel="noopener">📝 Info / prenotazione</a>
+            </div>
+          </div>
+        </details>
+        </div>
+      </div>
     </div></div>
   </div>
 
@@ -1100,6 +1258,25 @@ img,svg,video,canvas{max-width:100%;height:auto}
 
 <input id="cameraInput" type="file" accept="image/*" capture="environment" style="display:none">
 <input id="pickerInput" type="file" accept="image/*" multiple style="display:none">
+
+
+<!-- ══ CAMBIO ══ -->
+<div id="cambio" class="sec">
+  <div class="bk-card">
+    <div class="gallery-intro">
+      <div class="gallery-title">Cambio valuta · Fiorini ↔ Euro</div>
+    </div>
+    <div class="currency-box currency-box-page">
+      <div class="currency-title">💱 Convertitore Fiorini → Euro</div>
+      <div class="currency-sub">Inserisci un importo in HUF per stimare il valore in euro. Il convertitore prova ad aggiornare il cambio online; se non c’è rete usa una stima rapida di 400 HUF = 1 €.</div>
+      <div class="currency-row">
+        <input id="hufAmount" class="currency-input" type="number" inputmode="decimal" placeholder="Importo in HUF">
+        <button class="currency-btn" type="button" onclick="convertHufToEur()">Converti</button>
+      </div>
+      <div id="currencyResult" class="currency-result">Esempio: 4.000 HUF ≈ circa 10 €</div>
+    </div>
+  </div>
+</div>
 
 </div>
 <script>
